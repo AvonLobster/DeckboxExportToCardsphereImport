@@ -367,6 +367,20 @@ def process_edition(edition, card_num, printing_note):
     # M
     elif edition == 'Media Inserts':
         edition = 'Resale Promos'
+    elif edition == 'Modern Horizons 2':
+        if int(card_num) >= 327 and int(card_num) <= 380:
+            edition = 'Modern Horizons 2 Showcase'
+        elif int(card_num) >= 381 and int(card_num) <= 441:
+            edition = 'Modern Horizons 2 Retro Frame'
+    elif edition == 'Murders at Karlov Manor':
+        if int(card_num) >= 287 and int(card_num) <= 316:
+            edition = 'Murders at Karlov Manor - Showcase Magnified'
+        elif int(card_num) >= 317 and int(card_num) <= 323:
+            edition = 'Murders at Karlov Manor - Showcase Ravnica City'
+        elif int(card_num) >= 336 and int(card_num) <= 376:
+            edition = 'Murders at Karlov Manor - Showcase Dossier'
+        elif int(card_num) >= 390 and int(card_num) <= 422:
+            edition = 'Murders at Karlov Manor - Extended Art'
     # P
     elif edition == 'Phyrexia: All Will Be One':
         if int(card_num) >= 285 and int(card_num) <= 324:
@@ -393,11 +407,6 @@ def process_edition(edition, card_num, printing_note):
         edition = edition[12:] + ' - Promo Pack'
     elif edition.startswith('Duel Decks Anthology'):
         edition = 'Duel Decks: Anthology'
-    elif edition == 'Modern Horizons 2':
-        if int(card_num) >= 327 and int(card_num) <= 380:
-            edition = 'Modern Horizons 2 Showcase'
-        elif int(card_num) >= 381 and int(card_num) <= 441:
-            edition = 'Modern Horizons 2 Retro Frame'
     elif edition == 'Prerelease Events: Modern Horizons 2':
         edition = 'Modern Horizons 2 Prerelease Promos'
     elif edition == 'Kaldheim Commander':
