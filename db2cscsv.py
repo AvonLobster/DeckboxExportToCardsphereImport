@@ -383,6 +383,11 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'Innistrad: Midnight Hunt':
         if int(card_num) >= 278 and int(card_num) <= 379:
             edition = 'Innistrad: Midnight Hunt - Showcase'
+    elif edition == 'Modern Horizons 2':
+        if int(card_num) >= 327 and int(card_num) <= 380:
+            edition = 'Modern Horizons 2 Showcase'
+        elif int(card_num) >= 381 and int(card_num) <= 441:
+            edition = 'Modern Horizons 2 Retro Frame'
     elif edition == 'Prerelease Events: Modern Horizons 2':
         edition = 'Modern Horizons 2 Prerelease Promos'
     elif edition == 'Kaldheim Commander':
@@ -414,7 +419,6 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'Unfinity':
         if int(card_num) >= 287 and int(card_num) <= 537:
             edition = 'Unfinity Galaxy Foil'
-    # TODO: Mondern Horizons 2 retro border
     # TODO: Phyrexia All will be One full art
 
     return edition
