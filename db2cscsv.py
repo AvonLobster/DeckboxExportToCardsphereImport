@@ -354,8 +354,41 @@ def process_name(name, edition, card_num):
 def process_edition(edition, card_num, printing_note):
     edition = edition.replace("Extras: ", "")
 
-    if edition == 'Global Series: Jiang Yanggu and Mu Yanling':
+    # A
+    if edition == 'Avacyn Restored (The Helvault Experience)':
+        edition = 'Avacyn Restored'
+    # G
+    elif edition == 'Global Series: Jiang Yanggu and Mu Yanling':
         edition = 'Global Series: Jiang Yanggu & Mu Yanling'
+    # I
+    elif edition == 'Innistrad: Midnight Hunt':
+        if int(card_num) >= 278 and int(card_num) <= 379:
+            edition = 'Innistrad: Midnight Hunt - Showcase'
+    # M
+    elif edition == 'Media Inserts':
+        edition = 'Resale Promos'
+    elif edition == 'Modern Horizons 2':
+        if int(card_num) >= 327 and int(card_num) <= 380:
+            edition = 'Modern Horizons 2 Showcase'
+        elif int(card_num) >= 381 and int(card_num) <= 441:
+            edition = 'Modern Horizons 2 Retro Frame'
+    elif edition == 'Murders at Karlov Manor':
+        if int(card_num) >= 287 and int(card_num) <= 316:
+            edition = 'Murders at Karlov Manor - Showcase Magnified'
+        elif int(card_num) >= 317 and int(card_num) <= 323:
+            edition = 'Murders at Karlov Manor - Showcase Ravnica City'
+        elif int(card_num) >= 336 and int(card_num) <= 376:
+            edition = 'Murders at Karlov Manor - Showcase Dossier'
+        elif int(card_num) >= 390 and int(card_num) <= 422:
+            edition = 'Murders at Karlov Manor - Extended Art'
+    # P
+    elif edition == 'Phyrexia: All Will Be One':
+        if int(card_num) >= 285 and int(card_num) <= 324:
+            edition = 'Phyrexia: All Will Be One - Borderless Ichor'
+    # T
+    elif edition == 'Throne of Eldraine Foil Double Sided':
+        edition = 'Throne of Eldraine'
+    # W
     elif edition == 'World Championship Deck: 2004, Gabriel Nassif':
         edition = None
     elif edition == 'World Championship Deck: 1999, Kai Budde':
@@ -366,10 +399,6 @@ def process_edition(edition, card_num, printing_note):
         edition = None
     elif edition == 'World Championship Deck: 2000, Janosch Kühn':
         edition = 'World Championship'
-    elif edition == 'Avacyn Restored (The Helvault Experience)':
-        edition = 'Avacyn Restored'
-    elif edition == 'Media Inserts':
-        edition = 'Resale Promos'
     elif edition.startswith('Oversized'):
         edition = None
     elif edition == 'Promo Pack: Theros Beyond Death':
@@ -378,11 +407,6 @@ def process_edition(edition, card_num, printing_note):
         edition = edition[12:] + ' - Promo Pack'
     elif edition.startswith('Duel Decks Anthology'):
         edition = 'Duel Decks: Anthology'
-    elif edition == 'Throne of Eldraine Foil Double Sided':
-        edition = 'Throne of Eldraine'
-    elif edition == 'Innistrad: Midnight Hunt':
-        if int(card_num) >= 278 and int(card_num) <= 379:
-            edition = 'Innistrad: Midnight Hunt - Showcase'
     elif edition == 'Prerelease Events: Modern Horizons 2':
         edition = 'Modern Horizons 2 Prerelease Promos'
     elif edition == 'Kaldheim Commander':
@@ -414,8 +438,6 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'Unfinity':
         if int(card_num) >= 287 and int(card_num) <= 537:
             edition = 'Unfinity Galaxy Foil'
-    # TODO: Mondern Horizons 2 retro border
-    # TODO: Phyrexia All will be One full art
 
     return edition
 
