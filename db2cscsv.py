@@ -2,11 +2,11 @@ import sys
 import csv
 
 # Constants
-CSV_NAME = 3
-CSV_EDITION = 4
-CSV_CARD_NUM = 6
-CSV_FOIL = 9
-CSV_PRINTING_NOTE = 17
+CSV_NAME = 4
+CSV_EDITION = 5
+CSV_CARD_NUM = 7
+CSV_FOIL = 10
+CSV_PRINTING_NOTE = 18
 
 def process_name(name, edition, card_num):
     name = name.replace('"', '') # Remove quoted card name. CS doesn't like quotes.
