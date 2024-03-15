@@ -364,6 +364,9 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'Innistrad: Midnight Hunt':
         if int(card_num) >= 278 and int(card_num) <= 379:
             edition = 'Innistrad: Midnight Hunt - Showcase'
+    # L
+    elif edition == 'The List':
+        edition = 'Mystery Booster'
     # M
     elif edition == 'Media Inserts':
         edition = 'Resale Promos'

@@ -3,6 +3,7 @@ import db2cscsv
 
 class TestDeckboxToCardSphereCSV(unittest.TestCase):
 
+# Card Name Tests
     def test_quotes_removed_from_card_name(self):
         # given
         card = '"Lifetime" Pass Holder'
@@ -15,6 +16,20 @@ class TestDeckboxToCardSphereCSV(unittest.TestCase):
         # then
         self.assertEqual(result, 'Lifetime Pass Holder')
 
+# Card Edition Tests
+    def test_the_list_edition(self):
+        # given
+        ed = 'The List'
+        num = 2
+        note = ''
+
+        # when
+        result = db2cscsv.process_edition(ed, num, note)
+
+        # then
+        self.assertEqual(result, 'Mystery Booster')
+
+# Miscellaneous Tests
     def test_csv_header(self):
         # given a copied and pasted header from the latest Deckbox Tradelist export
         header = 'Count,Tradelist Count,Decks Count Built,Decks Count All,Name,Edition,Edition Code,Card Number,Condition,Language,Foil,Signed,Artist Proof,Altered Art,Misprint,Promo,Textless,Printing Id,Printing Note,Tags,My Price,Type,Cost,Rarity,Price,Image URL,Last Updated'
