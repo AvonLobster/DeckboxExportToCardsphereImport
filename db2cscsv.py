@@ -398,6 +398,8 @@ def process_edition(edition, card_num, printing_note):
             edition = ' Murders at Karlov Manor - Commander Extended Art'
         else:
             edition = 'Murders at Karlov Manor - Commander'
+    elif edition == 'Mystery Booster Playtest Cards 2021':
+        edition = 'Mystery Booster (No PW Symbol)'
     # P
     elif edition == 'Phyrexia: All Will Be One':
         if int(card_num) >= 285 and int(card_num) <= 324:
