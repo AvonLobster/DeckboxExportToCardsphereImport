@@ -195,7 +195,8 @@ def process_name(name, edition, card_num):
                 #name = 'Beast Token | Clue Token (#15)' Cardsphere only has this card in foil
                 name = DROP_CARD
             elif name == 'Clue':
-                name = 'Clue Token (#014)'
+                #name = 'Clue Token (#014)' Cardsphere failed to categorize this with a MKM duplicate
+                name = DROP_CARD
             elif name == 'Crab // Food':
                 name = 'Crab Token | Food Token (#18)'
             else:
