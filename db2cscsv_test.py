@@ -21,13 +21,23 @@ class TestDeckboxToCardSphereCSV(unittest.TestCase):
         # given
         ed = 'The List'
         num = 2
-        note = ''
 
         # when
-        result = db2cscsv.process_edition(ed, num, note)
+        result = db2cscsv.process_edition(ed, num, '')
 
         # then
         self.assertEqual(result, 'Mystery Booster')
+
+    def test_mkm_borderless(self):
+        # given
+        ed = 'Murders at Karlov Manor'
+        num = 329
+
+        # when
+        result = db2cscsv.process_edition(ed, num, '')
+
+        # then
+        self.assertEqual(result, 'Murders at Karlov Manor - Borderless')
 
 # Miscellaneous Tests
     def test_csv_header(self):

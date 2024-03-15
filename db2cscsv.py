@@ -8,6 +8,8 @@ CSV_CARD_NUM = 7
 CSV_FOIL = 10
 CSV_PRINTING_NOTE = 18
 
+DROP_CARD = 'DROP_CARD'
+
 def process_name(name, edition, card_num):
     name = name.replace('"', '') # Remove quoted card name. CS doesn't like quotes.
 
@@ -190,7 +192,8 @@ def process_name(name, edition, card_num):
                 name += ' Token'
         elif edition == 'Extras: Modern Horizons 2':
             if name == 'Beast // Clue':
-                name = 'Beast Token | Clue Token (#15)'
+                #name = 'Beast Token | Clue Token (#15)' Cardsphere only has this card in foil
+                name = DROP_CARD
             elif name == 'Clue':
                 name = 'Clue Token (#014)'
             elif name == 'Crab // Food':
@@ -347,6 +350,10 @@ def process_name(name, edition, card_num):
     if edition == 'Champions of Kamigawa' and name == 'Brothers Yamazaki':
         name = 'Brothers Yamazaki (#160a)'
 
+    # Clean up
+    if name == DROP_CARD:
+        name = None
+
     return name
 
 
@@ -380,10 +387,17 @@ def process_edition(edition, card_num, printing_note):
             edition = 'Murders at Karlov Manor - Showcase Magnified'
         elif int(card_num) >= 317 and int(card_num) <= 323:
             edition = 'Murders at Karlov Manor - Showcase Ravnica City'
+        elif int(card_num) >= 324 and int(card_num) <= 335:
+            edition = 'Murders at Karlov Manor - Borderless'
         elif int(card_num) >= 336 and int(card_num) <= 376:
             edition = 'Murders at Karlov Manor - Showcase Dossier'
         elif int(card_num) >= 390 and int(card_num) <= 422:
             edition = 'Murders at Karlov Manor - Extended Art'
+    elif edition == 'Murders at Karlov Manor Commander':
+        if int(card_num) >= 312 and int(card_num) <= 358:
+            edition = ' Murders at Karlov Manor - Commander Extended Art'
+        else:
+            edition = 'Murders at Karlov Manor - Commander'
     # P
     elif edition == 'Phyrexia: All Will Be One':
         if int(card_num) >= 285 and int(card_num) <= 324:
