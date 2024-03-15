@@ -2,11 +2,13 @@ import sys
 import csv
 
 # Constants
-CSV_NAME = 3
-CSV_EDITION = 4
-CSV_CARD_NUM = 6
-CSV_FOIL = 9
-CSV_PRINTING_NOTE = 17
+CSV_NAME = 4
+CSV_EDITION = 5
+CSV_CARD_NUM = 7
+CSV_FOIL = 10
+CSV_PRINTING_NOTE = 18
+
+DROP_CARD = 'DROP_CARD'
 
 def process_name(name, edition, card_num):
     name = name.replace('"', '') # Remove quoted card name. CS doesn't like quotes.
@@ -144,6 +146,8 @@ def process_name(name, edition, card_num):
                 name = 'Angel Token | Zombie Token'
             elif name == 'Cat // Soldier':
                 name = 'Cat Token | Soldier Token'
+            elif name == 'Clue // Construct':
+                name = 'Clue Token | Construct Token (6/12)'
             elif name == 'Construct // Myr':
                 name = 'Construct Token (4/4) (2/1)'
             elif name == 'Token: Dragon Egg // Dragon':
@@ -190,9 +194,11 @@ def process_name(name, edition, card_num):
                 name += ' Token'
         elif edition == 'Extras: Modern Horizons 2':
             if name == 'Beast // Clue':
-                name = 'Beast Token | Clue Token (#15)'
+                #name = 'Beast Token | Clue Token (#15)' Cardsphere only has this card in foil
+                name = DROP_CARD
             elif name == 'Clue':
-                name = 'Clue Token (#014)'
+                #name = 'Clue Token (#014)' Cardsphere failed to categorize this with a MKM duplicate
+                name = DROP_CARD
             elif name == 'Crab // Food':
                 name = 'Crab Token | Food Token (#18)'
             else:
@@ -347,6 +353,10 @@ def process_name(name, edition, card_num):
     if edition == 'Champions of Kamigawa' and name == 'Brothers Yamazaki':
         name = 'Brothers Yamazaki (#160a)'
 
+    # Clean up
+    if name == DROP_CARD:
+        name = None
+
     return name
 
 
@@ -364,6 +374,9 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'Innistrad: Midnight Hunt':
         if int(card_num) >= 278 and int(card_num) <= 379:
             edition = 'Innistrad: Midnight Hunt - Showcase'
+    # L
+    elif edition == 'The List':
+        edition = 'Mystery Booster'
     # M
     elif edition == 'Media Inserts':
         edition = 'Resale Promos'
@@ -377,10 +390,19 @@ def process_edition(edition, card_num, printing_note):
             edition = 'Murders at Karlov Manor - Showcase Magnified'
         elif int(card_num) >= 317 and int(card_num) <= 323:
             edition = 'Murders at Karlov Manor - Showcase Ravnica City'
+        elif int(card_num) >= 324 and int(card_num) <= 335:
+            edition = 'Murders at Karlov Manor - Borderless'
         elif int(card_num) >= 336 and int(card_num) <= 376:
             edition = 'Murders at Karlov Manor - Showcase Dossier'
         elif int(card_num) >= 390 and int(card_num) <= 422:
             edition = 'Murders at Karlov Manor - Extended Art'
+    elif edition == 'Murders at Karlov Manor Commander':
+        if int(card_num) >= 312 and int(card_num) <= 358:
+            edition = ' Murders at Karlov Manor - Commander Extended Art'
+        else:
+            edition = 'Murders at Karlov Manor - Commander'
+    elif edition == 'Mystery Booster Playtest Cards 2021':
+        edition = 'Mystery Booster (No PW Symbol)'
     # P
     elif edition == 'Phyrexia: All Will Be One':
         if int(card_num) >= 285 and int(card_num) <= 324:
