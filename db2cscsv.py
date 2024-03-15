@@ -146,6 +146,8 @@ def process_name(name, edition, card_num):
                 name = 'Angel Token | Zombie Token'
             elif name == 'Cat // Soldier':
                 name = 'Cat Token | Soldier Token'
+            elif name == 'Clue // Construct':
+                name = 'Clue Token | Construct Token (6/12)'
             elif name == 'Construct // Myr':
                 name = 'Construct Token (4/4) (2/1)'
             elif name == 'Token: Dragon Egg // Dragon':
