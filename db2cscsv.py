@@ -200,7 +200,8 @@ def process_name(name, edition, card_num):
                 #name = 'Clue Token (#014)' Cardsphere failed to categorize this with a MKM duplicate
                 name = DROP_CARD
             elif name == 'Crab // Food':
-                name = 'Crab Token | Food Token (#18)'
+                #name = 'Crab Token | Food Token (#18)' Cardsphere only has this card in foil
+                name = DROP_CARD
             else:
                 name += ' Token'
         elif edition == 'Extras: Unsanctioned':
@@ -310,6 +311,10 @@ def process_name(name, edition, card_num):
         if ' // ' in name:
             name = name.split(' // ')[0]
 
+    # Placeholder tokens
+    if name == 'Double-Faced Card Placeholder':
+        name = DROP_CARD
+
     # Deckbox is stupid
     if edition == '':
         if name == 'Angel // Elemental':
@@ -385,6 +390,8 @@ def process_edition(edition, card_num, printing_note):
             edition = 'Modern Horizons 2 Showcase'
         elif int(card_num) >= 381 and int(card_num) <= 441:
             edition = 'Modern Horizons 2 Retro Frame'
+    elif edition == 'Prerelease Events: Modern Horizons 2':
+        edition = 'Modern Horizons 2 Prerelease Promos'
     elif edition == 'Murders at Karlov Manor':
         if int(card_num) >= 287 and int(card_num) <= 316:
             edition = 'Murders at Karlov Manor - Showcase Magnified'
@@ -407,10 +414,23 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'Phyrexia: All Will Be One':
         if int(card_num) >= 285 and int(card_num) <= 324:
             edition = 'Phyrexia: All Will Be One - Borderless Ichor'
+    # R
+    elif edition == 'Ravnica Remastered':
+        if int(card_num) >= 292 and int(card_num) <= 301:
+            edition = 'Ravnica Remastered - Borderless'
+        elif int(card_num) >= 302 and int(card_num) <= 415:
+            edition = 'Ravnica Remastered - Retro Frame'
+    # S
+    elif edition == 'Promo pack: Strixhaven: School of Mages':
+        edition = 'Strixhaven: School of Mages Promo Pack'
     # T
+    elif edition == 'Promo Pack: Theros Beyond Death':
+        edition = 'Theros: Beyond Death - Promo Pack'
     elif edition == 'Throne of Eldraine Foil Double Sided':
         edition = 'Throne of Eldraine'
     # W
+    elif edition == 'Prerelease Events: War of the Spark':
+        edition = 'Prerelease Promos'
     elif edition == 'World Championship Deck: 2004, Gabriel Nassif':
         edition = None
     elif edition == 'World Championship Deck: 1999, Kai Budde':
@@ -421,32 +441,25 @@ def process_edition(edition, card_num, printing_note):
         edition = None
     elif edition == 'World Championship Deck: 2000, Janosch Kühn':
         edition = 'World Championship'
+    # Misc
     elif edition.startswith('Oversized'):
         edition = None
-    elif edition == 'Promo Pack: Theros Beyond Death':
-        edition = 'Theros: Beyond Death - Promo Pack'
+    elif edition.startswith('Prerelease Events: '):
+        edition = edition[19:] + ' - Prerelease Promos'
     elif edition.startswith('Promo Pack: '):
         edition = edition[12:] + ' - Promo Pack'
     elif edition.startswith('Duel Decks Anthology'):
         edition = 'Duel Decks: Anthology'
-    elif edition == 'Prerelease Events: Modern Horizons 2':
-        edition = 'Modern Horizons 2 Prerelease Promos'
     elif edition == 'Kaldheim Commander':
         edition = 'Kaldheim Commander Decks'
     elif edition == 'Legends Italian':
         edition = 'Legends'
-    elif edition == 'Prerelease Events: Innistrad: Midnight Hunt':
-        edition = 'Innistrad: Midnight Hunt - Prerelease Promos'
-    elif edition == 'Prerelease Events: Innistrad: Crimson Vow':
-        edition = 'Innistrad: Crimson Vow - Prerelease Promos'
     elif edition == 'Standard Showdown Promos':
         edition = 'Store Championship Promos'
     elif edition == 'Jumpstart Front Cards':
         edition = None
     elif edition == 'Kaldheim Placeholders':
         edition = 'Kaldheim'
-    elif edition == 'Prerelease Events: War of the Spark':
-        edition = 'Prerelease Promos'
     elif edition == 'Ikoria: Lair of Behemoths':
         if printing_note == 'Showcase':
             edition = 'Ikoria: Lair of Behemoths - Alternate Art'
