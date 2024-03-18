@@ -239,9 +239,6 @@ def process_name(name, edition, card_num):
                 name = 'Chandra Emblem'
             else:
                 name += ' Token'
-        elif edition == 'Extras: Kaldheim Placeholders':
-            if name == 'Double-Faced Card Placeholder':
-                name = 'Helper Card (#' + card_num + ')'
         elif edition == 'Extras: Iconic Masters':
             if name == 'Dragon':
                 if card_num == '5':
@@ -300,6 +297,9 @@ def process_name(name, edition, card_num):
                 name = 'Copy Token | Treasure Token (#17)'
             else:
                 name += ' Token'
+        # Double-Faced Card Placeholders aka Helper Cards
+        elif edition.endswith(' Placeholders'):
+            name = 'Helper Card (#' + card_num + ')'
         else:
             name += ' Token'
 
@@ -310,10 +310,6 @@ def process_name(name, edition, card_num):
     if edition == 'Innistrad: Midnight Hunt' or edition == 'Innistrad: Crimson Vow' or edition == 'Champions of Kamigawa' or edition == 'Dark Ascension' or edition == 'Zendikar Rising Commander' or edition == 'Betrayers of Kamigawa' or edition == 'Innistrad' or edition == 'Shadows over Innistrad' or edition == 'Eldritch Moon':
         if ' // ' in name:
             name = name.split(' // ')[0]
-
-    # Placeholder tokens
-    if name == 'Double-Faced Card Placeholder':
-        name = DROP_CARD
 
     # Deckbox is stupid
     if edition == '':
@@ -368,6 +364,7 @@ def process_name(name, edition, card_num):
 
 def process_edition(edition, card_num, printing_note):
     edition = edition.replace("Extras: ", "")
+    edition = edition.replace(" Placeholders", "")
 
     # A
     if edition == 'Avacyn Restored (The Helvault Experience)':
@@ -464,8 +461,6 @@ def process_edition(edition, card_num, printing_note):
         edition = 'Store Championship Promos'
     elif edition == 'Jumpstart Front Cards':
         edition = None
-    elif edition == 'Kaldheim Placeholders':
-        edition = 'Kaldheim'
     elif edition == 'Ikoria: Lair of Behemoths':
         if printing_note == 'Showcase':
             edition = 'Ikoria: Lair of Behemoths - Alternate Art'
