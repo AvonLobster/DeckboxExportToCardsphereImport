@@ -38,6 +38,14 @@ class TestDeckboxToCardSphereCSV(unittest.TestCase):
 
         self.assertEqual(result, 'Ravnica Remastered - Retro Frame')
 
+    def test_stx_showcase(self):
+        ed = 'Strixhaven: School of Mages'
+        num = 382
+
+        result = db2cscsv.process_edition(ed, num, '')
+
+        self.assertEqual(result, 'Strixhaven: School of Mages Promo Pack')
+
 # Miscellaneous Tests
     def test_csv_header(self):
         # given a copied and pasted header from the latest Deckbox Tradelist export

@@ -379,6 +379,9 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'Innistrad: Midnight Hunt':
         if int(card_num) >= 278 and int(card_num) <= 379:
             edition = 'Innistrad: Midnight Hunt - Showcase'
+    # K
+    elif edition == 'Prerelease Events: Kaladesh':
+        edition = 'Prerelease Promos'
     # L
     elif edition == 'The List':
         edition = 'Mystery Booster'
@@ -421,6 +424,9 @@ def process_edition(edition, card_num, printing_note):
         elif int(card_num) >= 302 and int(card_num) <= 415:
             edition = 'Ravnica Remastered - Retro Frame'
     # S
+    elif edition == 'Strixhaven: School of Mages':
+        if int(card_num) >= 378 and int(card_num) <= 382:
+            edition = 'Strixhaven: School of Mages Promo Pack'
     elif edition == 'Promo pack: Strixhaven: School of Mages':
         edition = 'Strixhaven: School of Mages Promo Pack'
     # T
