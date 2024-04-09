@@ -290,6 +290,13 @@ def process_name(name, edition, card_num):
                     name = 'Construct Token (2/2)'
                 else:
                     name = 'Construct Token (0/0)'
+            elif name == 'Double-Faced Card Placeholder':
+                name = 'Helper Card'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: The Lost Caverns of Ixalan':
+            if name == 'Double-Faced Card Placeholder':
+                name = 'Helper Card'
             else:
                 name += ' Token'
         elif edition == 'Extras: Streets of New Capenna':
@@ -369,6 +376,25 @@ def process_edition(edition, card_num, printing_note):
     # A
     if edition == 'Avacyn Restored (The Helvault Experience)':
         edition = 'Avacyn Restored'
+    # B
+    elif edition == 'The Brothers\' War':
+        if int(card_num) >= 293 and int(card_num) <= 300:
+            edition = 'The Brothers\' War - Borderless'
+        elif int(card_num) >= 301 and int(card_num) <= 377:
+            edition = 'The Brothers\' War - Extended Art'
+    elif edition == 'The Brothers\' War Retro Artifacts':
+        if int (card_num) >= 64:
+            edition = 'The Brothers\' War - Retro Artifacts (Schematic)'
+        else:
+            edition = 'The Brothers\' War - Retro Artifacts'
+    # F
+    elif edition == 'Fallout':
+        if int(card_num) >= 327 and int(card_num) <= 352:
+            edition = 'Fallout - Showcase'
+        elif int(card_num) >= 353 and int(card_num) <= 361:
+            edition = 'Fallout - Borderless'
+        elif int(card_num) >= 362 and int(card_num) <= 528:
+            edition = 'Fallout - Extended Art'
     # G
     elif edition == 'Global Series: Jiang Yanggu and Mu Yanling':
         edition = 'Global Series: Jiang Yanggu & Mu Yanling'
@@ -464,8 +490,6 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'Ikoria: Lair of Behemoths':
         if printing_note == 'Showcase':
             edition = 'Ikoria: Lair of Behemoths - Alternate Art'
-    elif edition == 'The Brothers\' War Retro Artifacts':
-        edition = 'The Brothers\' War - Retro Artifacts'
     elif edition == 'Dominaria Remastered':
         if int(card_num) >= 262 and int(card_num) <= 401:
             edition = 'Dominaria Remastered - Retro Frame'
