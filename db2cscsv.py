@@ -12,6 +12,7 @@ DROP_CARD = 'DROP_CARD'
 
 def process_name(name, edition, card_num):
     name = name.replace('"', '') # Remove quoted card name. CS doesn't like quotes.
+    name = name.replace('ú', 'u')
 
     # Alliances, Fallen Empires, Homelands, and Portal variants
     if edition == 'Alliances' or edition == 'Homelands' or edition == 'Fallen Empires' or edition == 'Portal':
@@ -408,6 +409,8 @@ def process_edition(edition, card_num, printing_note):
     # L
     elif edition == 'The List':
         edition = 'Mystery Booster'
+    elif edition == 'The Lord of the Rings: Tales of Middle-earth':
+        edition = 'Lord of the Rings: Tales of Middle-earth'
     # M
     elif edition == 'Media Inserts':
         edition = 'Resale Promos'
@@ -457,6 +460,9 @@ def process_edition(edition, card_num, printing_note):
         edition = 'Theros: Beyond Death - Promo Pack'
     elif edition == 'Throne of Eldraine Foil Double Sided':
         edition = 'Throne of Eldraine'
+    # U
+    elif edition == 'The List (Unfinity Foil Edition)':
+        edition = 'The List - Unfinity'
     # W
     elif edition == 'Prerelease Events: War of the Spark':
         edition = 'Prerelease Promos'
