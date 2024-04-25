@@ -95,6 +95,17 @@ def process_name(name, edition, card_num):
                 name = 'Drake Token | Goblin Warrior Token'
             elif name == 'Drake // Insect':
                 name = 'Drake Token | Insect Token (Blue/Red)'
+        elif edition == 'Extras: Fallout':
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Phyrexia: All Will Be One':
+            if name == 'Emblem: Koth, Fire of Resistance':
+                name = 'Koth, Fire of Resistance Emblem'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Planechase Anthology':
             if name == 'Angel // Saproling':
                 name = 'Angel Token | Saproling Token'
@@ -258,6 +269,10 @@ def process_name(name, edition, card_num):
                 name = 'Eldrazi Scion Token (#' + card_num + ')'
             elif name == 'Elemental':
                 name = 'Elemental Token (Red)'
+            elif name == 'Emblem: Gideon':
+                name = 'Gideon Emblem'
+            elif name == 'Emblem: Kiora, Master of the Depths':
+                name = 'Kiora Emblem'
             else: 
                 name += ' Token'
         elif edition == 'Extras: Oath of the Gatewatch':

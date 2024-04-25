@@ -13,6 +13,34 @@ class TestDeckboxToCardSphereCSV(unittest.TestCase):
 
         self.assertEqual(result, 'Lifetime Pass Holder')
 
+    def test_dunedain_blade_accent_vowel(self):
+        card = 'Dúnedain Blade'
+        ed = 'The Lord of the Rings: Tales of Middle-earth'
+        num = 6
+
+        result = db2cscsv.process_name(card, ed, num)
+
+        self.assertEqual(result, 'Dunedain Blade')
+
+# Card Name Tests (Tokens)
+    def test_two_sided_fallout_tokens(self):
+        card = 'Alien // Clue'
+        ed = 'Extras: Fallout'
+        num = 29
+
+        result = db2cscsv.process_name(card, ed, num)
+
+        self.assertEqual(result, 'Alien Token | Clue Token')
+
+    def test_emblem_token(self):
+        card = 'Emblem: Gideon'
+        ed = 'Extras: Battle for Zendikar'
+        num = 12
+
+        result = db2cscsv.process_name(card, ed, num)
+
+        self.assertEqual(result, 'Gideon Emblem')
+
 # Card Edition Tests
     def test_the_list_edition(self):
         ed = 'The List'
