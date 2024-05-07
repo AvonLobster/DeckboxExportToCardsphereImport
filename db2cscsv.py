@@ -12,7 +12,6 @@ DROP_CARD = 'DROP_CARD'
 
 def process_name(name, edition, card_num):
     name = name.replace('"', '') # Remove quoted card name. CS doesn't like quotes.
-    name = name.replace('ú', 'u')
 
     # Alliances, Fallen Empires, Homelands, and Portal variants
     if edition == 'Alliances' or edition == 'Homelands' or edition == 'Fallen Empires' or edition == 'Portal':
@@ -96,7 +95,9 @@ def process_name(name, edition, card_num):
             elif name == 'Drake // Insect':
                 name = 'Drake Token | Insect Token (Blue/Red)'
         elif edition == 'Extras: Fallout':
-            if ' // ' in name:
+            if name == 'Copy // Clue':
+                name = 'Clue Token | Copy Token'
+            elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
@@ -234,9 +235,16 @@ def process_name(name, edition, card_num):
                     name = 'Checklist Card (CH2) (Rare/Mythic)'
             else:
                 name += ' Token'
+        elif edition == 'Extras: Guilds of Ravnica':
+            if name == 'Emblem: Ral, Izzet Viceroy':
+                name = 'Ral Emblem'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Ikoria: Lair of Behemoths':
             if name == 'Companion':
                 pass
+            elif name == 'Emblem: Narset of the Ancient Way':
+                name = 'Narset Emblem'
             else:
                 name += ' Token'
         elif edition == 'Extras: Innistrad: Midnight Hunt':
@@ -262,6 +270,11 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Core Set 2019':
             if name == 'Dragon':
                 name = 'Dragon Token (#9)'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Core Set 2020':
+            if name == 'Emblem: Mu Yanling, Sky Dancer':
+                name = 'Mu Yanling Emblem'
             else:
                 name += ' Token'
         elif edition == 'Extras: Battle for Zendikar':
@@ -308,6 +321,8 @@ def process_name(name, edition, card_num):
                     name = 'Construct Token (0/0)'
             elif name == 'Double-Faced Card Placeholder':
                 name = 'Helper Card'
+            elif name == 'Emblem: Saheeli, Filigree Master':
+                name = 'Saheeli, Filigree Master Emblem'
             else:
                 name += ' Token'
         elif edition == 'Extras: The Lost Caverns of Ixalan':
@@ -376,6 +391,14 @@ def process_name(name, edition, card_num):
     # Misc
     if edition == 'Champions of Kamigawa' and name == 'Brothers Yamazaki':
         name = 'Brothers Yamazaki (#160a)'
+    elif edition == 'The Lord of the Rings: Tales of Middle-earth':
+        if int(card_num) == 6:
+            name = 'Dunedain Blade'
+
+    # Thick Stock
+    if edition == 'Fallout':
+        if int(card_num) >= 1064 and int(card_num) <= 1067:
+            name = DROP_CARD
 
     # Clean up
     if name == DROP_CARD:
@@ -411,6 +434,7 @@ def process_edition(edition, card_num, printing_note):
             edition = 'Fallout - Borderless'
         elif int(card_num) >= 362 and int(card_num) <= 528:
             edition = 'Fallout - Extended Art'
+
     # G
     elif edition == 'Global Series: Jiang Yanggu and Mu Yanling':
         edition = 'Global Series: Jiang Yanggu & Mu Yanling'
