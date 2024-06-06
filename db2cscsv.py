@@ -1,7 +1,6 @@
 import sys
 import csv
 
-#TODO: Crimson Vow variants
 #TODO: Kaldheim variants
 #TODO: drop poor/damaged cards
 # Constants
@@ -442,6 +441,15 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'Global Series: Jiang Yanggu and Mu Yanling':
         edition = 'Global Series: Jiang Yanggu & Mu Yanling'
     # I
+    elif edition == 'Innistrad: Crimson Vow':
+        if int(card_num) >= 278 and int(card_num) <= 285:
+            edition = 'Innistrad: Crimson Vow - Borderless'
+        elif int(card_num) >= 286 and int(card_num) <= 316:
+            edition = 'Innistrad: Crimson Vow - Showcase Fang Frame'
+        elif int(card_num) >= 317 and int(card_num) <= 328:
+            edition = 'Innistrad: Crimson Vow - Showcase'
+        elif int (card_num) >= 346 and int(card_num) <= 397:
+            edition = 'Innistrad: Crimson Vow - Extended Art'
     elif edition == 'Innistrad: Midnight Hunt':
         if int(card_num) >= 278 and int(card_num) <= 379:
             edition = 'Innistrad: Midnight Hunt - Showcase'
