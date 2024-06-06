@@ -1,6 +1,9 @@
 import sys
 import csv
 
+#TODO: Crimson Vow variants
+#TODO: Kaldheim variants
+#TODO: drop poor/damaged cards
 # Constants
 CSV_NAME = 4
 CSV_EDITION = 5
@@ -445,6 +448,13 @@ def process_edition(edition, card_num, printing_note):
     # K
     elif edition == 'Prerelease Events: Kaladesh':
         edition = 'Prerelease Promos'
+    elif edition == 'Kamigawa: Neon Dynasty':
+        if (int(card_num) >= 303 and int(card_num) <= 306) or (int(card_num) >= 406 and int(card_num) <= 416):
+            edition = 'Kamigawa: Neon Dynasty - Borderless'
+        elif int(card_num) >= 309 and int(card_num) <= 405:
+            edition = 'Kamigawa: Neon Dynasty - Showcase'
+        elif int (card_num) >= 433 and int(card_num) <= 505:
+            edition = 'Kamigawa: Neon Dynasty - Extended Art'
     # L
     elif edition == 'The List':
         edition = 'Mystery Booster'
