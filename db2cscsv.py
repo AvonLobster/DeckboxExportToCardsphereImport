@@ -2,11 +2,11 @@ import sys
 import csv
 
 #TODO: Kaldheim variants
-#TODO: drop poor/damaged cards
 # Constants
 CSV_NAME = 4
 CSV_EDITION = 5
 CSV_CARD_NUM = 7
+CSV_CONDITION = 8
 CSV_FOIL = 10
 CSV_PRINTING_NOTE = 18
 
@@ -585,6 +585,9 @@ def process_csv(dbcsv):
             colValues = []
             i = 0
             omitRow = False
+
+            if row[CSV_CONDITION] == 'Poor':
+                continue
 
             for col in row:
                 if i == CSV_NAME:
