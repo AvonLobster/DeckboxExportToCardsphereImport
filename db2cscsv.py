@@ -1,7 +1,6 @@
 import sys
 import csv
 
-#TODO: Kaldheim variants
 # Constants
 CSV_NAME = 4
 CSV_EDITION = 5
@@ -347,7 +346,7 @@ def process_name(name, edition, card_num):
             name = 'Checklist Card'
 
     # Two-faced cards
-    if edition == 'Innistrad: Midnight Hunt' or edition == 'Innistrad: Crimson Vow' or edition == 'Champions of Kamigawa' or edition == 'Dark Ascension' or edition == 'Zendikar Rising Commander' or edition == 'Betrayers of Kamigawa' or edition == 'Innistrad' or edition == 'Shadows over Innistrad' or edition == 'Eldritch Moon':
+    if edition == 'Innistrad: Midnight Hunt' or edition == 'Innistrad: Crimson Vow' or edition == 'Champions of Kamigawa' or edition == 'Dark Ascension' or edition == 'Zendikar Rising Commander' or edition == 'Betrayers of Kamigawa' or edition == 'Innistrad' or edition == 'Shadows over Innistrad' or edition == 'Eldritch Moon' or edition == 'March of the Machine' or edition == 'Wilds of Eldraine':
         if ' // ' in name:
             name = name.split(' // ')[0]
 
@@ -456,6 +455,15 @@ def process_edition(edition, card_num, printing_note):
     # K
     elif edition == 'Prerelease Events: Kaladesh':
         edition = 'Prerelease Promos'
+    elif edition == 'Kaldheim':
+        if int(card_num) >= 286 and int(card_num) <= 298:
+            edition = 'Kaldheim - Alternate Art'
+        elif int(card_num) >= 299 and int(card_num) <= 332:
+            edition = 'Kaldheim - Showcase'
+        elif int(card_num) >= 334 and int(card_num) <= 373:
+            edition = 'Kaldheim - Extended Art'
+    elif edition == 'Kaldheim Commander':
+        edition = 'Kaldheim Commander Decks'
     elif edition == 'Kamigawa: Neon Dynasty':
         if (int(card_num) >= 303 and int(card_num) <= 306) or (int(card_num) >= 406 and int(card_num) <= 416):
             edition = 'Kamigawa: Neon Dynasty - Borderless'
@@ -542,8 +550,6 @@ def process_edition(edition, card_num, printing_note):
         edition = edition[12:] + ' - Promo Pack'
     elif edition.startswith('Duel Decks Anthology'):
         edition = 'Duel Decks: Anthology'
-    elif edition == 'Kaldheim Commander':
-        edition = 'Kaldheim Commander Decks'
     elif edition == 'Legends Italian':
         edition = 'Legends'
     elif edition == 'Standard Showdown Promos':
