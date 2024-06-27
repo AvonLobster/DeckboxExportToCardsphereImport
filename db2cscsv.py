@@ -241,6 +241,16 @@ def process_name(name, edition, card_num):
                 name = 'Ral Emblem'
             else:
                 name += ' Token'
+        elif edition == 'Extras: Kaladesh':
+            if name == 'Energy Reserve':
+                name = 'Energy Reserve'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Kaldheim':
+            if name == 'Emblem: Tyvar Kell':
+                name = 'Tyvar Emblem'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Ikoria: Lair of Behemoths':
             if name == 'Companion':
                 pass
@@ -346,7 +356,7 @@ def process_name(name, edition, card_num):
             name = 'Checklist Card'
 
     # Two-faced cards
-    if edition == 'Innistrad: Midnight Hunt' or edition == 'Innistrad: Crimson Vow' or edition == 'Champions of Kamigawa' or edition == 'Dark Ascension' or edition == 'Zendikar Rising Commander' or edition == 'Betrayers of Kamigawa' or edition == 'Innistrad' or edition == 'Shadows over Innistrad' or edition == 'Eldritch Moon' or edition == 'March of the Machine' or edition == 'Wilds of Eldraine':
+    if edition == 'Innistrad: Midnight Hunt' or edition == 'Innistrad: Crimson Vow' or edition == 'Champions of Kamigawa' or edition == 'Dark Ascension' or edition == 'Zendikar Rising Commander' or edition == 'Betrayers of Kamigawa' or edition == 'Innistrad' or edition == 'Shadows over Innistrad' or edition == 'Eldritch Moon' or edition == 'March of the Machine' or edition == 'Wilds of Eldraine' or edition == 'Innistrad: Double Feature':
         if ' // ' in name:
             name = name.split(' // ')[0]
 
