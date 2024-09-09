@@ -98,6 +98,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Fallout':
             if name == 'Copy // Clue':
                 name = 'Clue Token | Copy Token'
+            elif name == 'Energy Reserve // Treasure':
+                name = 'Engery Reserve | Treasure Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
