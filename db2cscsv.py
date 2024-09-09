@@ -262,7 +262,7 @@ def process_name(name, edition, card_num):
                 name += ' Token'
         elif edition == 'Extras: Innistrad: Midnight Hunt':
             if name == 'Double-Faced Card Placeholder':
-                db_weirdness = card_num - 79
+                db_weirdness = str(int(card_num) - 79)
                 name = 'Helper Card (#' + db_weirdness + ')'
             elif name == 'Day // Night':
                 name = 'Day | Night (Token)'
