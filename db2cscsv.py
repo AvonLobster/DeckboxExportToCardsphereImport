@@ -259,7 +259,10 @@ def process_name(name, edition, card_num):
             else:
                 name += ' Token'
         elif edition == 'Extras: Innistrad: Midnight Hunt':
-            if name == 'Day // Night':
+            if name == 'Double-Faced Card Placeholder':
+                db_weirdness = card_num - 79
+                name = 'Helper Card (#' + db_weirdness + ')'
+            elif name == 'Day // Night':
                 name = 'Day | Night (Token)'
             else:
                 name += ' Token'
@@ -334,6 +337,12 @@ def process_name(name, edition, card_num):
                 name = 'Helper Card'
             elif name == 'Emblem: Saheeli, Filigree Master':
                 name = 'Saheeli, Filigree Master Emblem'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: March of the Machine':
+            if name == 'Double-Faced Card Placeholder':
+                name = 'Helper Card'
+                edition = 'March of the Machine - Promo Pack'
             else:
                 name += ' Token'
         elif edition == 'Extras: The Lost Caverns of Ixalan':
