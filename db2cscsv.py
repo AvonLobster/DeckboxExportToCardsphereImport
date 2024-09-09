@@ -427,6 +427,17 @@ def process_edition(edition, card_num, printing_note):
     if edition == 'Avacyn Restored (The Helvault Experience)':
         edition = 'Avacyn Restored'
     # B
+    elif edition == 'Bloomburrow':
+        if int(card_num) >= 282 and int(card_num) <= 286:
+            edition = 'Bloomburrow - Borderless'
+        elif int(card_num) >= 287 and int(card_num) <= 294:
+            edition = 'Bloomburrow - Borderless Field Notes'
+        elif int(card_num) >= 295 and int(card_num) <= 336:
+            edition = 'Bloomburrow - Showcase'
+        elif int(card_num) >= 341 and int(card_num) <= 342:
+            edition = 'Bloomburrow - Borderless'
+        elif int(card_num) >= 356 and int(card_num) <= 368:
+            edition = 'Bloomburrow - Extended Art'
     elif edition == 'The Brothers\' War':
         if int(card_num) >= 293 and int(card_num) <= 300:
             edition = 'The Brothers\' War - Borderless'
@@ -602,7 +613,7 @@ def process_csv(dbcsv):
             i = 0
             omitRow = False
 
-            if row[CSV_CONDITION] == 'Poor':
+            if len(row) >= 18 and row[CSV_CONDITION] == 'Poor':
                 continue
 
             for col in row:
