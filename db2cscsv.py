@@ -521,7 +521,7 @@ def process_edition(edition, card_num, printing_id, printing_note):
             edition = 'Kamigawa: Neon Dynasty - Extended Art'
     # L
     elif edition == 'The List':
-        if int(printing_id) > 96300:
+        if int(printing_id) > 95500:
             edition = 'Mystery Booster 2'
         else:
             edition = 'Mystery Booster'
