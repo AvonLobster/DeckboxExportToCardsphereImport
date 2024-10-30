@@ -83,7 +83,11 @@ def process_name(name, edition, card_num):
 
     # Tokens
     if edition.startswith('Extras'):
-        if edition == 'Extras: Avacyn Restored':
+        # Not quite a token
+        if name == 'Experience':
+            name = 'Experience Counter'
+        # Cardsphere unique names
+        elif edition == 'Extras: Avacyn Restored':
             if name == 'Angel // Demon':
                 name = 'Angel Token | Demon Token (Helvault) (Double-Sided)'
         elif edition == 'Extras: Commander 2020':
@@ -99,7 +103,7 @@ def process_name(name, edition, card_num):
             if name == 'Copy // Clue':
                 name = 'Clue Token | Copy Token'
             elif name == 'Energy Reserve // Treasure':
-                name = 'Engery Reserve | Treasure Token'
+                name = 'Energy Reserve | Treasure Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
@@ -344,7 +348,6 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: March of the Machine':
             if name == 'Double-Faced Card Placeholder':
                 name = 'Helper Card'
-                edition = 'March of the Machine - Promo Pack'
             else:
                 name += ' Token'
         elif edition == 'Extras: The Lost Caverns of Ixalan':
@@ -355,6 +358,18 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Streets of New Capenna':
             if name == 'Copy // Treasure':
                 name = 'Copy Token | Treasure Token (#17)'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Zendikar Rising Commander':
+            if name == 'Faerie Rogue // Goblin Rogue':
+                #name = Faerie Rogue Token | Goblin Rogue Token -- Cardsphere does not have this card
+                name = DROP_CARD
+            elif name == 'Faerie Rogue // Rat':
+                #name = Faerie Rogue Token | Rat Token -- Cardsphere does not have this card
+                name = DROP_CARD
+            elif name == 'Faerie Rogue // Thopter':
+                #name = Faerie Rogue Token | Thopter Token
+                name = DROP_CARD
             else:
                 name += ' Token'
         # Double-Faced Card Placeholders aka Helper Cards
@@ -509,6 +524,9 @@ def process_edition(edition, card_num, printing_note):
     elif edition == 'The Lord of the Rings: Tales of Middle-earth':
         edition = 'Lord of the Rings: Tales of Middle-earth'
     # M
+    elif edition == 'March of the Machine':
+        if int(card_num) == 24:
+            edition = 'March of the Machine - Promo Pack'
     elif edition == 'Media Inserts':
         edition = 'Resale Promos'
     elif edition == 'Modern Horizons 2':
