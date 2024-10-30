@@ -7,6 +7,7 @@ CSV_EDITION = 5
 CSV_CARD_NUM = 7
 CSV_CONDITION = 8
 CSV_FOIL = 10
+CSV_PRINTING_ID = 17
 CSV_PRINTING_NOTE = 18
 
 DROP_CARD = 'DROP_CARD'
@@ -445,7 +446,7 @@ def process_name(name, edition, card_num):
 
 
 
-def process_edition(edition, card_num, printing_note):
+def process_edition(edition, card_num, printing_id, printing_note):
     edition = edition.replace("Extras: ", "")
     edition = edition.replace(" Placeholders", "")
 
@@ -520,7 +521,10 @@ def process_edition(edition, card_num, printing_note):
             edition = 'Kamigawa: Neon Dynasty - Extended Art'
     # L
     elif edition == 'The List':
-        edition = 'Mystery Booster'
+        if int(printing_id) > 96300:
+            edition = 'Mystery Booster 2'
+        else:
+            edition = 'Mystery Booster'
     elif edition == 'The Lord of the Rings: Tales of Middle-earth':
         edition = 'Lord of the Rings: Tales of Middle-earth'
     # M
@@ -652,7 +656,7 @@ def process_csv(dbcsv):
                         omitRow = True
                         break
                 if i == CSV_EDITION:
-                    col = process_edition(col, row[CSV_CARD_NUM], row[CSV_PRINTING_NOTE])
+                    col = process_edition(col, row[CSV_CARD_NUM], row[CSV_PRINTING_ID], row[CSV_PRINTING_NOTE])
                     if col is None:
                         omitRow = True
                         break
