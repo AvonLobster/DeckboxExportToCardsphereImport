@@ -70,6 +70,12 @@ def process_name(name, edition, card_num):
     elif edition == 'Duel Decks Anthology, Divine vs. Demonic':
         if name == 'Corrupt':
             name = 'Corrupt (Divine vs. Demonic)'
+    elif edition == 'Duel Decks Anthology, Elves vs. Goblins':
+        if name == 'Flamewave Invoker':
+            name = 'Flamewave Invoker (Elves vs. Goblins)'
+    elif edition == 'Duel Decks Anthology, Jace vs. Chandra':
+        if name == 'Flamewave Invoker':
+            name = 'Flamewave Invoker (Jace vs. Chandra)'
 
 
     # Un variants
@@ -100,6 +106,11 @@ def process_name(name, edition, card_num):
                 name = 'Drake Token | Goblin Warrior Token'
             elif name == 'Drake // Insect':
                 name = 'Drake Token | Insect Token (Blue/Red)'
+        elif edition == 'Extras: Commander Masters':
+            if name == 'Assassin // Servo':
+                name = 'Assassin Token | Servo Token'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Fallout':
             if name == 'Copy // Clue':
                 name = 'Clue Token | Copy Token'
@@ -189,6 +200,9 @@ def process_name(name, edition, card_num):
                 name = 'Elephant Token | Saproling Token'
             else:
                 name += ' Token'
+        elif edition == 'Extras: Throne of Eldraine':
+            if name == 'Food':
+                name = 'Food Token (#' + card_num + ')'
         elif edition == 'Extras: Throne of Eldraine Foil Double Sided':
             if name == 'Bear // Food':
                 name = 'Bear Token | Food Token'
@@ -354,6 +368,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: The Lost Caverns of Ixalan':
             if name == 'Double-Faced Card Placeholder':
                 name = 'Helper Card'
+            elif name == 'Bat // Treasure':
+                name = 'Bat Token | Treasure Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Streets of New Capenna':
