@@ -203,6 +203,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Throne of Eldraine':
             if name == 'Food':
                 name = 'Food Token (#' + card_num + ')'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Throne of Eldraine Foil Double Sided':
             if name == 'Bear // Food':
                 name = 'Bear Token | Food Token'
@@ -237,6 +239,8 @@ def process_name(name, edition, card_num):
             elif name == 'Crab // Food':
                 #name = 'Crab Token | Food Token (#18)' Cardsphere only has this card in foil
                 name = DROP_CARD
+            elif name == 'Food':
+                name = 'Food Token (#0' + card_num + ')'
             else:
                 name += ' Token'
         elif edition == 'Extras: Unsanctioned':
@@ -448,6 +452,8 @@ def process_name(name, edition, card_num):
     elif edition == 'The Lord of the Rings: Tales of Middle-earth':
         if int(card_num) == 6:
             name = 'Dunedain Blade'
+        if int(card_num) == 10:
+            name = 'Eowyn, Lady of Rohan'
 
     # Thick Stock
     if edition == 'Fallout':
