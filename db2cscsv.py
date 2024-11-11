@@ -73,6 +73,8 @@ def process_name(name, edition, card_num):
     elif edition == 'Duel Decks Anthology, Elves vs. Goblins':
         if name == 'Flamewave Invoker':
             name = 'Flamewave Invoker (Elves vs. Goblins)'
+        elif name == 'Forest':
+            name = 'Forest (#' + card_num + ') (Elves vs. Goblins)'
     elif edition == 'Duel Decks Anthology, Jace vs. Chandra':
         if name == 'Flamewave Invoker':
             name = 'Flamewave Invoker (Jace vs. Chandra)'
@@ -229,6 +231,11 @@ def process_name(name, edition, card_num):
                 name = 'Daretti Emblem'
             else:
                 name += ' Token'
+        elif edition == 'Extras: The Lord of the Rings: Tales of Middle-earth':
+            if name == 'Food':
+                name = 'Food Token (#009)'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Modern Horizons 2':
             if name == 'Beast // Clue':
                 #name = 'Beast Token | Clue Token (#15)' Cardsphere only has this card in foil
@@ -240,7 +247,8 @@ def process_name(name, edition, card_num):
                 #name = 'Crab Token | Food Token (#18)' Cardsphere only has this card in foil
                 name = DROP_CARD
             elif name == 'Food':
-                name = 'Food Token (#0' + card_num + ')'
+                #name = 'Food Token (#0' + card_num + ')' This looks like it perfectly matches CS' entry but it fails
+                name = DROP_CARD
             else:
                 name += ' Token'
         elif edition == 'Extras: Unsanctioned':
