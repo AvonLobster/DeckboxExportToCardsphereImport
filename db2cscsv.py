@@ -67,6 +67,8 @@ def process_name(name, edition, card_num):
     if edition == 'Duel Decks Anthology, Garruk vs. Liliana':
         if name == 'Corrupt':
             name = 'Corrupt (Garruk vs. Liliana)'
+        elif name == 'Forest':
+            name = 'Forest (#' + card_num + ') (Garruk vs. Liliana)'
     elif edition == 'Duel Decks Anthology, Divine vs. Demonic':
         if name == 'Corrupt':
             name = 'Corrupt (Divine vs. Demonic)'
@@ -553,6 +555,10 @@ def process_edition(edition, card_num, printing_id, printing_note):
     elif edition == 'The List':
         if int(printing_id) > 95500:
             edition = 'Mystery Booster 2'
+        elif int(printing_id) == 59150:
+            edition = "The List - Adventures in the Forgotten Realms"
+        elif int(printing_id) == 81919:
+            edition = "The List - Wilds of Eldraine"
         else:
             edition = 'Mystery Booster'
     elif edition == 'The Lord of the Rings: Tales of Middle-earth':
