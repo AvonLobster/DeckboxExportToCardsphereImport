@@ -452,6 +452,13 @@ def process_name(name, edition, card_num):
             name += ' (C)'
         elif edition == 'Portal Second Age':
             name += ' (B)'
+        elif edition == 'Battlebond' or edition == 'Guilds of Ravnica':
+            name += '' # Do nothing
+        elif edition == 'Dominaria Remastered':
+            name += ' (#' + card_num + ') (Retro Frame)'
+        elif edition == 'Ixalan' or edition == 'Core Set 2020':
+            if card_num == '278':
+                name = 'Forest (#278) (Full Art)'
         else:
             name += ' (#' + card_num + ')'
 
