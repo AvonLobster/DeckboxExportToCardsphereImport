@@ -110,6 +110,10 @@ def process_name(name, edition, card_num):
                 name = 'Drake Token | Goblin Warrior Token'
             elif name == 'Drake // Insect':
                 name = 'Drake Token | Insect Token (Blue/Red)'
+            elif name == 'Ability Punchcard':
+                name = 'Punch Card'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Commander Masters':
             if name == 'Assassin // Servo':
                 name = 'Assassin Token | Servo Token'
@@ -284,6 +288,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Kaldheim':
             if name == 'Emblem: Tyvar Kell':
                 name = 'Tyvar Emblem'
+            elif name == 'Foretell':
+                name += '' # Do nothing
             else:
                 name += ' Token'
         elif edition == 'Extras: Ikoria: Lair of Behemoths':
@@ -291,6 +297,8 @@ def process_name(name, edition, card_num):
                 pass
             elif name == 'Emblem: Narset of the Ancient Way':
                 name = 'Narset Emblem'
+            elif name == 'Ability Punchcard':
+                name = 'Punch Card'
             else:
                 name += ' Token'
         elif edition == 'Extras: Innistrad: Midnight Hunt':
@@ -372,6 +380,8 @@ def process_name(name, edition, card_num):
                 name = 'Helper Card'
             elif name == 'Emblem: Saheeli, Filigree Master':
                 name = 'Saheeli, Filigree Master Emblem'
+            elif name == 'Ability Punchcard':
+                name = DROP_CARD
             else:
                 name += ' Token'
         elif edition == 'Extras: March of the Machine':
@@ -413,7 +423,7 @@ def process_name(name, edition, card_num):
             name = 'Checklist Card'
 
     # Two-faced cards
-    if edition == 'Innistrad: Midnight Hunt' or edition == 'Innistrad: Crimson Vow' or edition == 'Champions of Kamigawa' or edition == 'Dark Ascension' or edition == 'Zendikar Rising Commander' or edition == 'Betrayers of Kamigawa' or edition == 'Innistrad' or edition == 'Shadows over Innistrad' or edition == 'Eldritch Moon' or edition == 'March of the Machine' or edition == 'Wilds of Eldraine' or edition == 'Innistrad: Double Feature':
+    if edition == 'Innistrad: Midnight Hunt' or edition == 'Innistrad: Crimson Vow' or edition == 'Champions of Kamigawa' or edition == 'Dark Ascension' or edition == 'Zendikar Rising Commander' or edition == 'Betrayers of Kamigawa' or edition == 'Innistrad' or edition == 'Shadows over Innistrad' or edition == 'Eldritch Moon' or edition == 'March of the Machine' or edition == 'Wilds of Eldraine' or edition == 'Innistrad: Double Feature' or edition == 'Murders at Karlov Manor' or edition == 'The Lost Caverns of Ixalan':
         if ' // ' in name:
             name = name.split(' // ')[0]
 
@@ -454,11 +464,11 @@ def process_name(name, edition, card_num):
             name += ' (B)'
         elif edition == 'Battlebond' or edition == 'Guilds of Ravnica':
             name += '' # Do nothing
-        elif edition == 'Dominaria Remastered':
-            name += ' (#' + card_num + ') (Retro Frame)'
         elif edition == 'Ixalan' or edition == 'Core Set 2020':
             if card_num == '278':
                 name = 'Forest (#278) (Full Art)'
+            else:
+                name += ' (#' + card_num + ')'
         else:
             name += ' (#' + card_num + ')'
 
@@ -514,6 +524,9 @@ def process_edition(edition, card_num, printing_id, printing_note):
             edition = 'The Brothers\' War - Retro Artifacts (Schematic)'
         else:
             edition = 'The Brothers\' War - Retro Artifacts'
+    elif edition == 'Dominaria Remastered':
+        if int(card_num) >= 262 and int(card_num) <= 411:
+            edition = 'Dominaria Remastered - Retro Frame'
     # F
     elif edition == 'Fallout':
         if int(card_num) >= 327 and int(card_num) <= 352:
@@ -570,6 +583,13 @@ def process_edition(edition, card_num, printing_id, printing_note):
             edition = 'Mystery Booster'
     elif edition == 'The Lord of the Rings: Tales of Middle-earth':
         edition = 'Lord of the Rings: Tales of Middle-earth'
+    elif edition == 'The Lost Caverns of Ixalan':
+        if int(card_num) >= 292 and int(card_num) <= 319:
+            edition = 'The Lost Caverns of Ixalan - Showcase'
+        elif int(card_num) >= 320 and int(card_num) <= 352:
+            edition = 'The Lost Caverns of Ixalan - Borderless'
+        elif int(card_num) >= 353 and int(card_num) <= 392:
+            edition = 'The Lost Caverns of Ixalan - Extended Art'
     # M
     elif edition == 'March of the Machine':
         if int(card_num) == 24:
@@ -603,7 +623,9 @@ def process_edition(edition, card_num, printing_id, printing_note):
         edition = 'Mystery Booster (No PW Symbol)'
     # P
     elif edition == 'Phyrexia: All Will Be One':
-        if int(card_num) >= 285 and int(card_num) <= 324:
+        if (int(card_num) == 271):
+            edition = 'Phyrexia: All Will Be One - Phyrexian Language'
+        elif int(card_num) >= 285 and int(card_num) <= 324:
             edition = 'Phyrexia: All Will Be One - Borderless Ichor'
     # R
     elif edition == 'Ravnica Remastered':
