@@ -139,6 +139,8 @@ def process_name(name, edition, card_num):
                 name = 'Angel Token | Saproling Token'
             elif name == 'Dragon // Saproling':
                 name = 'Dragon Token | Saproling Token'
+            elif name == 'Germ // Goblin':
+                name = 'Germ Token | Goblin Token'
         elif edition == 'Extras: Commander 2019':
             if name == 'Angel of Sanctions // Horror':
                 name = 'Angel of Sanctions Token | Horror Token'
@@ -540,6 +542,11 @@ def process_edition(edition, card_num, printing_id, printing_note):
     elif edition == 'Global Series: Jiang Yanggu and Mu Yanling':
         edition = 'Global Series: Jiang Yanggu & Mu Yanling'
     # I
+    elif edition == 'Ikoria: Lair of Behemoths':
+        if printing_note == 'Showcase':
+            edition = 'Ikoria: Lair of Behemoths - Alternate Art'
+    elif edition == 'Prerelease Events: Ikoria: Lair of Behemoths':
+        edition = 'Ikoria: Lair of Behemoths Prerelease Promos'
     elif edition == 'Innistrad: Crimson Vow':
         if int(card_num) >= 278 and int(card_num) <= 285:
             edition = 'Innistrad: Crimson Vow - Borderless'
@@ -573,12 +580,14 @@ def process_edition(edition, card_num, printing_id, printing_note):
             edition = 'Kamigawa: Neon Dynasty - Extended Art'
     # L
     elif edition == 'The List':
-        if int(printing_id) > 95500:
-            edition = 'Mystery Booster 2'
-        elif int(printing_id) == 59150:
+        if int(printing_id) == 59150:
             edition = "The List - Adventures in the Forgotten Realms"
         elif int(printing_id) == 81919:
             edition = "The List - Wilds of Eldraine"
+        elif int(printing_id) == 88397:
+            edition = "The List - Murders at Karlov Manor"
+        elif int(printing_id) > 95481:
+            edition = 'Mystery Booster 2'
         else:
             edition = 'Mystery Booster'
     elif edition == 'The Lord of the Rings: Tales of Middle-earth':
@@ -621,6 +630,9 @@ def process_edition(edition, card_num, printing_id, printing_note):
             edition = 'Murders at Karlov Manor - Commander'
     elif edition == 'Mystery Booster Playtest Cards 2021':
         edition = 'Mystery Booster (No PW Symbol)'
+    # O
+    elif edition == 'Prerelease Events: Oath of the Gatewatch':
+        edition = 'Prelease Promos'
     # P
     elif edition == 'Phyrexia: All Will Be One':
         if (int(card_num) == 271):
@@ -675,9 +687,6 @@ def process_edition(edition, card_num, printing_id, printing_note):
         edition = 'Store Championship Promos'
     elif edition == 'Jumpstart Front Cards':
         edition = None
-    elif edition == 'Ikoria: Lair of Behemoths':
-        if printing_note == 'Showcase':
-            edition = 'Ikoria: Lair of Behemoths - Alternate Art'
     elif edition == 'Dominaria Remastered':
         if int(card_num) >= 262 and int(card_num) <= 401:
             edition = 'Dominaria Remastered - Retro Frame'
