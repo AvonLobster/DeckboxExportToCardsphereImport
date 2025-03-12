@@ -135,12 +135,11 @@ def process_name(name, edition, card_num):
             else:
                 name += ' Token'
         elif edition == 'Extras: Planechase Anthology':
-            if name == 'Angel // Saproling':
-                name = 'Angel Token | Saproling Token'
-            elif name == 'Dragon // Saproling':
-                name = 'Dragon Token | Saproling Token'
-            elif name == 'Germ // Goblin':
-                name = 'Germ Token | Goblin Token'
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Commander 2019':
             if name == 'Angel of Sanctions // Horror':
                 name = 'Angel of Sanctions Token | Horror Token'
@@ -194,6 +193,12 @@ def process_name(name, edition, card_num):
                 name = 'Construct Token (4/4) (2/1)'
             elif name == 'Token: Dragon Egg // Dragon':
                 name = 'Dragon Token | Dragon Egg'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Commander 2016':
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander 2017':
@@ -415,6 +420,11 @@ def process_name(name, edition, card_num):
                 name = DROP_CARD
             else:
                 name += ' Token'
+        elif edition == 'Extras: Ravnica Remastered':
+            if name == 'Goblin':
+                name = 'Goblin Token (1/1)'
+            else:
+                name += ' Token'
         # Double-Faced Card Placeholders aka Helper Cards
         elif edition.endswith(' Placeholders'):
             name = 'Helper Card (#' + card_num + ')'
@@ -425,7 +435,20 @@ def process_name(name, edition, card_num):
             name = 'Checklist Card'
 
     # Two-faced cards
-    if edition == 'Innistrad: Midnight Hunt' or edition == 'Innistrad: Crimson Vow' or edition == 'Champions of Kamigawa' or edition == 'Dark Ascension' or edition == 'Zendikar Rising Commander' or edition == 'Betrayers of Kamigawa' or edition == 'Innistrad' or edition == 'Shadows over Innistrad' or edition == 'Eldritch Moon' or edition == 'March of the Machine' or edition == 'Wilds of Eldraine' or edition == 'Innistrad: Double Feature' or edition == 'Murders at Karlov Manor' or edition == 'The Lost Caverns of Ixalan':
+    if (edition == 'Innistrad: Midnight Hunt' 
+        or edition == 'Innistrad: Crimson Vow' 
+        or edition == 'Champions of Kamigawa' 
+        or edition == 'Dark Ascension' 
+        or edition == 'Zendikar Rising Commander' 
+        or edition == 'Betrayers of Kamigawa' 
+        or edition == 'Innistrad' 
+        or edition == 'Shadows over Innistrad' 
+        or edition == 'Eldritch Moon' 
+        or edition == 'March of the Machine' 
+        or edition == 'Wilds of Eldraine' 
+        or edition == 'Innistrad: Double Feature' 
+        or edition == 'Murders at Karlov Manor' 
+        or edition == 'The Lost Caverns of Ixalan'):
         if ' // ' in name:
             name = name.split(' // ')[0]
 
@@ -632,7 +655,7 @@ def process_edition(edition, card_num, printing_id, printing_note):
         edition = 'Mystery Booster (No PW Symbol)'
     # O
     elif edition == 'Prerelease Events: Oath of the Gatewatch':
-        edition = 'Prelease Promos'
+        edition = 'Prerelease Promos'
     # P
     elif edition == 'Phyrexia: All Will Be One':
         if (int(card_num) == 271):
