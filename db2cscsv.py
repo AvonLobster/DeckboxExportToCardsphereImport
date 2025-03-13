@@ -57,6 +57,9 @@ def process_name(name, edition, card_num):
                 name += ' (Richard Kane-Ferguson)'
             else:
                 name += ' (Christopher Rush)'
+        elif name == 'Goblin Chirurgeon':
+            if card_num == '110':
+                name += ' (Daniel Gelon)'
 
     # Guildgates
     if edition == 'Ravnica Allegiance' or edition == 'Guilds of Ravnica':
@@ -98,6 +101,11 @@ def process_name(name, edition, card_num):
         if name == 'Experience':
             name = 'Experience Counter'
         # Cardsphere unique names
+        elif edition == 'Extras: Adventures in the Forgotten Realms':
+            if name == 'Goblin // Dungeon of the Mad Mage':
+                name = 'Dungeon of the Mad Mage Dungeon | Goblin Token'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Avacyn Restored':
             if name == 'Angel // Demon':
                 name = 'Angel Token | Demon Token (Helvault) (Double-Sided)'
@@ -269,6 +277,10 @@ def process_name(name, edition, card_num):
                 name = 'Beeble Token | Dragon Token'
             elif name == 'Beeble // Squirrel':
                 name = 'Beeble Token | Squirrel Token'
+            elif name == 'Goblin // Giant Teddy Bear':
+                name = 'Giant Teddy Bear Token | Goblin Token'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Born of the Gods':
             if name == 'Bird':
                 name = 'Bird Token (Blue)'
@@ -448,7 +460,8 @@ def process_name(name, edition, card_num):
         or edition == 'Wilds of Eldraine' 
         or edition == 'Innistrad: Double Feature' 
         or edition == 'Murders at Karlov Manor' 
-        or edition == 'The Lost Caverns of Ixalan'):
+        or edition == 'The Lost Caverns of Ixalan'
+        or edition == "Commander Legends: Battle for Baldur's Gate"):
         if ' // ' in name:
             name = name.split(' // ')[0]
 
@@ -506,6 +519,8 @@ def process_name(name, edition, card_num):
             name = 'Dunedain Blade'
         if int(card_num) == 10:
             name = 'Eowyn, Lady of Rohan'
+        if int(card_num) == 134:
+            name = 'Grishnakh, Brash Instigator'
 
     # Thick Stock
     if edition == 'Fallout':
