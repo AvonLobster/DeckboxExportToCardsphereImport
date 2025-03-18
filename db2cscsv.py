@@ -109,17 +109,22 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Avacyn Restored':
             if name == 'Angel // Demon':
                 name = 'Angel Token | Demon Token (Helvault) (Double-Sided)'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Commander 2020':
             if name == 'Angel // Elemental':
                 name = 'Angel Token | Elemental Token (Red)'
             elif name == 'Bird Illusion // Beast':
                 name = 'Beast Token | Bird Illusion Token'
-            elif name == 'Drake // Goblin Warrior':
-                name = 'Drake Token | Goblin Warrior Token'
             elif name == 'Drake // Insect':
                 name = 'Drake Token | Insect Token (Blue/Red)'
+            elif name == 'Human Soldier // Drake':
+                name = 'Drake Token | Human Soldier Token (#05)'
             elif name == 'Ability Punchcard':
                 name = 'Punch Card'
+            elif ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander Masters':
@@ -132,6 +137,10 @@ def process_name(name, edition, card_num):
                 name = 'Clue Token | Copy Token'
             elif name == 'Energy Reserve // Treasure':
                 name = 'Energy Reserve | Treasure Token'
+            elif name == 'Human Knight // Copy':
+                name = 'Copy Token | Human Knight Token'
+            elif name == 'Human Knight // Food':
+                name = 'Food Token | Human Knight Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
