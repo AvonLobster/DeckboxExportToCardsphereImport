@@ -109,6 +109,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Avacyn Restored':
             if name == 'Angel // Demon':
                 name = 'Angel Token | Demon Token (Helvault) (Double-Sided)'
+            elif name == 'Human':
+                name = 'Human Token (Red)'
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander 2020':
@@ -122,6 +124,10 @@ def process_name(name, edition, card_num):
                 name = 'Drake Token | Human Soldier Token (#05)'
             elif name == 'Ability Punchcard':
                 name = 'Punch Card'
+            elif name == 'Human Soldier // Zombie':
+                name = DROP_CARD
+            elif name == 'Hydra // Beast':
+                name = DROP_CARD
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
@@ -716,6 +722,8 @@ def process_edition(edition, card_num, printing_id, printing_note):
     elif edition == 'World Championship Deck: 2000, Jon Finkel':
         edition = None
     elif edition == 'World Championship Deck: 2000, Nicolas Labarre':
+        edition = None
+    elif edition == 'World Championship Deck: 1997, Paul McCabe':
         edition = None
     elif edition == 'World Championship Deck: 2000, Janosch Kühn':
         edition = 'World Championship'
