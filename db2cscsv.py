@@ -152,6 +152,18 @@ def process_name(name, edition, card_num):
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
+        elif edition == 'Extras: Murders at Karlov Manor Commander':
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Outlaws of Thunder Junction Commander':
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Phyrexia: All Will Be One':
             if name == 'Emblem: Koth, Fire of Resistance':
                 name = 'Koth, Fire of Resistance Emblem'
@@ -216,6 +228,11 @@ def process_name(name, edition, card_num):
                 name = 'Construct Token (4/4) (2/1)'
             elif name == 'Token: Dragon Egg // Dragon':
                 name = 'Dragon Token | Dragon Egg'
+            elif name == 'Myr // Thopter':
+                if int(card_num) == 35:
+                    name = 'Myr Token (2/1) (#8)'
+                else:
+                    name = 'Myr Token (1/1) (#25)'
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander 2016':
@@ -418,6 +435,12 @@ def process_name(name, edition, card_num):
                 name = DROP_CARD
             else:
                 name += ' Token'
+        elif edition == 'Extras: The Brothers\' War Commander':
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
         elif edition == 'Extras: March of the Machine':
             if name == 'Double-Faced Card Placeholder':
                 name = 'Helper Card'
@@ -433,6 +456,12 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Streets of New Capenna':
             if name == 'Copy // Treasure':
                 name = 'Copy Token | Treasure Token (#17)'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Wilds of Eldraine':
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Zendikar Rising Commander':
