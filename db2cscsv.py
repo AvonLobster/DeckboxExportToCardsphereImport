@@ -101,9 +101,14 @@ def process_name(name, edition, card_num):
         if name == 'Experience':
             name = 'Experience Counter'
         # Cardsphere unique names
+        # A
         elif edition == 'Extras: Adventures in the Forgotten Realms':
             if name == 'Goblin // Dungeon of the Mad Mage':
                 name = 'Dungeon of the Mad Mage Dungeon | Goblin Token'
+            elif name == 'Skeleton // Lost Mine of Phandelver':
+                name = 'Lost Mine of Phandelver Dungeon | Skeleton Token'
+            elif name == 'The Atropal // Tomb of Annihilation':
+                name = 'The Atropal Token | Tomb of Annihilation Dungeon'
             else:
                 name += ' Token'
         elif edition == 'Extras: Avacyn Restored':
@@ -111,84 +116,50 @@ def process_name(name, edition, card_num):
                 name = 'Angel Token | Demon Token (Helvault) (Double-Sided)'
             elif name == 'Human':
                 name = 'Human Token (Red)'
+            elif name == 'Spirit':
+                name = 'Spirit Token (Blue)'
             else:
                 name += ' Token'
-        elif edition == 'Extras: Commander 2020':
-            if name == 'Angel // Elemental':
-                name = 'Angel Token | Elemental Token (Red)'
-            elif name == 'Bird Illusion // Beast':
-                name = 'Beast Token | Bird Illusion Token'
-            elif name == 'Drake // Insect':
-                name = 'Drake Token | Insect Token (Blue/Red)'
-            elif name == 'Human Soldier // Drake':
-                name = 'Drake Token | Human Soldier Token (#05)'
-            elif name == 'Ability Punchcard':
-                name = 'Punch Card'
-            elif name == 'Human Soldier // Zombie':
-                name = DROP_CARD
-            elif name == 'Hydra // Beast':
-                name = DROP_CARD
+        #C
+        elif edition == 'Extras: Commander 2015':
+            if name == 'Elephant // Saproling':
+                name = 'Elephant Token | Saproling Token'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Commander 2016':
+            if name == 'Saproling // Saproling':
+                name = 'Saproling Token (#16) (#17)'
+            elif name == 'Zombie // Worm':
+                name = 'Worm Token | Zombie Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
-        elif edition == 'Extras: Commander Masters':
-            if name == 'Assassin // Servo':
-                name = 'Assassin Token | Servo Token'
+        elif edition == 'Extras: Commander 2017':
+            if name == 'Cat // Cat Warrior':
+                name = 'Cat Token | Cat Warrior Token'
+            elif name == 'Dragon // Gold':
+                name = 'Dragon Token | Gold Token (4/4)'
+            elif name == 'Rat // Cat Warrior':
+                name = 'Cat Warrior Token | Rat Token'
             else:
                 name += ' Token'
-        elif edition == 'Extras: Fallout':
-            if name == 'Copy // Clue':
-                name = 'Clue Token | Copy Token'
-            elif name == 'Energy Reserve // Treasure':
-                name = 'Energy Reserve | Treasure Token'
-            elif name == 'Human Knight // Copy':
-                name = 'Copy Token | Human Knight Token'
-            elif name == 'Human Knight // Food':
-                name = 'Food Token | Human Knight Token'
+        elif edition == 'Extras: Commander 2018':
+            if name == 'Clue // Construct':
+                name = 'Clue Token | Construct Token (6/12)'
+            elif name == 'Construct // Myr':
+                name = 'Construct Token (4/4) (2/1)'
+            elif name == 'Token: Dragon Egg // Dragon':
+                name = 'Dragon Token | Dragon Egg'
+            elif name == 'Myr // Thopter':
+                if int(card_num) == 35:
+                    name = 'Myr Token (2/1) (#8)'
+                else:
+                    name = 'Myr Token (1/1) (#25)'
+            elif name == 'Servo // Thopter':
+                name = 'Servo Token | Thopter Token (#25)'
             elif ' // ' in name:
-                two_sided_token = name.split(' // ')
-                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
-            else:
-                name += ' Token'
-        elif edition == 'Extras: Murders at Karlov Manor Commander':
-            if name == 'City\'s Blessing // Human Soldier':
-                name = 'City\'s Blessing | Human Soldier Token'
-            elif name == 'Drake // Cat':
-                name = 'Cat Token | Drake Token'
-            elif name == 'Insect // Clue':
-                name = 'Clue Token | Insect Token'
-            elif name == 'Tentacle // Koma\'s Coil':
-                name = 'Koma\'s Coil Token | Tentacle Token'
-            elif name == 'Thopter // Rhino Warrior':
-                name = 'Rhino Warrior Token | Thopter Token (1/1)'
-            elif name == 'Thopter Token | Treasure Token':
-                name = DROP_CARD
-            elif name == 'Tiny Token | Eldrazi Token':
-                name = 'Eldrazi Token | Tiny Token'
-            elif name == 'Zombie Token | City\'s Blessing Token':
-                name = 'City\'s Blessing | Zombie Token'
-            elif name == 'Zombie Token | Salamander Warrior Token':
-                name = 'Salamander Warrior Token | Zombie Token'
-            elif ' // ' in name:
-                two_sided_token = name.split(' // ')
-                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
-            else:
-                name += ' Token'
-        elif edition == 'Extras: Outlaws of Thunder Junction Commander':
-            if ' // ' in name:
-                two_sided_token = name.split(' // ')
-                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
-            else:
-                name += ' Token'
-        elif edition == 'Extras: Phyrexia: All Will Be One':
-            if name == 'Emblem: Koth, Fire of Resistance':
-                name = 'Koth, Fire of Resistance Emblem'
-            else:
-                name += ' Token'
-        elif edition == 'Extras: Planechase Anthology':
-            if ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
@@ -233,48 +204,209 @@ def process_name(name, edition, card_num):
                 name = 'Zombie Token | Zombie Token (#10) (#11)'
             else:
                 name += ' Token'
-        elif edition == 'Extras: Commander 2018':
-            if name == 'Clue // Construct':
-                name = 'Clue Token | Construct Token (6/12)'
-            elif name == 'Construct // Myr':
-                name = 'Construct Token (4/4) (2/1)'
-            elif name == 'Token: Dragon Egg // Dragon':
-                name = 'Dragon Token | Dragon Egg'
-            elif name == 'Myr // Thopter':
-                if int(card_num) == 35:
-                    name = 'Myr Token (2/1) (#8)'
-                else:
-                    name = 'Myr Token (1/1) (#25)'
+        elif edition == 'Extras: Commander 2020':
+            if name == 'Angel // Elemental':
+                name = 'Angel Token | Elemental Token (Red)'
+            elif name == 'Bird Illusion // Beast':
+                name = 'Beast Token | Bird Illusion Token'
+            elif name == 'Drake // Insect':
+                name = 'Drake Token | Insect Token (Blue/Red)'
+            elif name == 'Human Soldier // Drake':
+                name = 'Drake Token | Human Soldier Token (#05)'
+            elif name == 'Ability Punchcard':
+                name = 'Punch Card'
+            elif name == 'Human Soldier // Zombie':
+                name = DROP_CARD
+            elif name == 'Hydra // Beast':
+                name = DROP_CARD
+            elif name == 'Spirit // Insect':
+                name = ' Insect Token | Spirit Token (Green)'
+            elif name == 'Treasure // Human':
+                name = 'Human Token | Treasure Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
-        elif edition == 'Extras: Commander 2016':
-            if ' // ' in name:
+        elif edition == 'Extras: Commander Masters':
+            if name == 'Assassin // Servo':
+                name = 'Assassin Token | Servo Token'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Conspiracy: Take the Crown':
+            if name == 'Soldier':
+                name = 'Soldier Token (1/1)'
+            else:
+                name += ' Token'
+        #D
+        elif edition == 'Extras: Dominaria':
+            if name == 'Knight':
+                name = 'Knight Token (#' + card_num +')'
+            elif name == 'Saproling':
+                name = 'Saproling Token (#' + card_num + ')'
+            else:
+                name += ' Token'
+        #E
+        elif edition == 'Extras: Eternal Masters':
+            if name == 'Elemental':
+                name = 'Elemental Token (Blue/Red)'
+            elif name == 'Spirit':
+                if int(card_num) == 1:
+                    name = 'Spirit Token (Colorless)'
+                else:
+                    name = 'Spirit Token (White)'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Explorers of Ixalan':
+            if name == 'Saproling // Treasure':
+                if int(card_num) == 4:
+                    name = 'Saproling Token | Treasure Token (#7)'
+                else:
+                    name = 'Saproling Token | Treasure Token (#10)'
+        #F
+        elif edition == 'Extras: Fallout':
+            if name == 'Copy // Clue':
+                name = 'Clue Token | Copy Token'
+            elif name == 'Energy Reserve // Treasure':
+                name = 'Energy Reserve | Treasure Token'
+            elif name == 'Human Knight // Copy':
+                name = 'Copy Token | Human Knight Token'
+            elif name == 'Human Knight // Food':
+                name = 'Food Token | Human Knight Token'
+            elif name == 'Radiation // Copy':
+                name = 'Copy Token | Radiation Token'
+            elif name == 'Radiation // Zombie Mutant':
+                name = 'Radiation | Zombie Mutant Token'
+            elif name == 'Settlement // Human Solider':
+                name = 'Human Soldier Token | Settlement Token'
+            elif name == 'Soldier // Human Soldier':
+                name = 'Human Soldier Token | Soldier Token'
+            elif name == 'Squirrel // Food':
+                name = 'Food Token | Squirrel Token'
+            elif name == 'Treasure // Human Knight':
+                name = 'Human Knight Token | Treasure Token'
+            elif name == 'Warrior // Soldier':
+                name = 'Soldier Token | Warrior Token'
+            elif name == 'Zombie Mutant // Clue':
+                name = 'Clue Token | Zombie Mutant Token'
+            elif name == 'Zombie Mutant // Copy':
+                name = 'Copy Token | Zombie Mutant Token'
+            elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
-        elif edition == 'Extras: Commander 2017':
-            if name == 'Cat // Cat Warrior':
-                name = 'Cat Token | Cat Warrior Token'
-            elif name == 'Dragon // Gold':
-                name = 'Dragon Token | Gold Token (4/4)'
-            elif name == 'Rat // Cat Warrior':
-                name = 'Cat Warrior Token | Rat Token'
+        #I
+        elif edition == 'Extras: Ixalan':
+            if name == 'Treasure':
+                name = 'Treasure Token (#' + card_num + ')'
             else:
                 name += ' Token'
-        elif edition == 'Extras: Commander 2015':
-            if name == 'Elephant // Saproling':
-                name = 'Elephant Token | Saproling Token'
+        #K
+        elif edition == 'Extras: Khans of Tarkir':
+            if name == 'Warrior':
+                name = 'Warrior Token (#' + card_num + ')'
             else:
                 name += ' Token'
-        elif edition == 'Extras: Dominaria':
-            if name == 'Knight':
-                name = 'Knight Token (#' + card_num +')'
+        #M
+        elif edition == 'Extras: Magic 2011':
+            if name == 'Ooze':
+                name = 'Ooze Token (2/2)'
             else:
                 name += ' Token'
+        elif edition == 'Extras: Magic 2015 Core Set':
+            if name == 'Wolf':
+                name = 'Wolf Token (Prerelease Promo)'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Magic Origins':
+            if name == 'Thopter':
+                name = 'Thopter Token (#' + card_num + ')'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Mirrodin Besieged':
+            if name == 'Poison Counter':
+                name = name
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Murders at Karlov Manor Commander':
+            if name == 'City\'s Blessing // Human Soldier':
+                name = 'City\'s Blessing | Human Soldier Token'
+            elif name == 'Drake // Cat':
+                name = 'Cat Token | Drake Token'
+            elif name == 'Insect // Clue':
+                name = 'Clue Token | Insect Token'
+            elif name == 'Tentacle // Koma\'s Coil':
+                name = 'Koma\'s Coil Token | Tentacle Token'
+            elif name == 'Thopter // Rhino Warrior':
+                name = 'Rhino Warrior Token | Thopter Token (1/1)'
+            elif name == 'Thopter Token | Treasure Token':
+                name = DROP_CARD
+            elif name == 'Tiny Token | Eldrazi Token':
+                name = 'Eldrazi Token | Tiny Token'
+            elif name == 'Zombie Token | City\'s Blessing Token':
+                name = 'City\'s Blessing | Zombie Token'
+            elif name == 'Zombie Token | Salamander Warrior Token':
+                name = 'Salamander Warrior Token | Zombie Token'
+            elif ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
+        #O
+        elif edition == 'Extras: Outlaws of Thunder Junction Commander':
+            if name == 'Bounty: Rissa Blades Lee // Bounty Rules':
+                name = 'Bounty: Rissa "Blades" Lee'
+            elif name.startswith('Bounty:'):
+                name = name.split(' // ')[0]
+            elif name == 'Dragon Elemental // Bird Illusion':
+                name = 'Bird Illusion Token | Dragon Elemental Token'
+            elif ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
+        #P
+        elif edition == 'Extras: Phyrexia: All Will Be One':
+            if name == 'Emblem: Koth, Fire of Resistance':
+                name = 'Koth, Fire of Resistance Emblem'
+            elif name == 'Phyrexian Goblin // Poison Counter':
+                name = DROP_CARD
+            elif name == 'Phyrexian Mite // Phyrexian Mite':
+                name = DROP_CARD
+            elif name == 'Rebel // Phyrexian Goblin':
+                name = DROP_CARD
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Planechase Anthology':
+            if name == 'Ooze // Ooze':
+                name = 'Ooze Token (1/1) (2/2)'
+            elif name == 'Ooze // Plant':
+                name = 'Ooze Token | Plant Token (1/1)'
+            elif ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
+        #S
+        elif edition == 'Extras: Scars of Mirrodin':
+            if name == 'Poison Counter':
+                name = name
+            else:
+                name += ' Token'
+        elif edition == 'Secret Lair Drop Series':
+            if name.startswith('Walker'):
+                if int(card_num) == 703 or int(card_num) == 704:
+                    name = 'Walker Token (Metal Head)'
+                elif int(card_num) == 706:
+                    name = 'Walker Token (Bicycle Girl)'
+                elif int(card_num) == 701 or int(card_num == 705):
+                    name = 'Walker Token (Well Walker)'
+                elif int(card_num) == 702:
+                    name = 'Walker Token (Winslow)'
+                else:
+                    name = 'Walker Token (Blade Walker)'
+        #T
         elif edition == 'Extras: Throne of Eldraine':
             if name == 'Food':
                 name = 'Food Token (#' + card_num + ')'
@@ -297,11 +429,18 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Commander Anthology':
             if name == 'Beast':
                 name = 'Beast Token (3/3)'
+            elif name == 'Wolf':
+                name = 'Wolf Token (#' + card_num + ')'
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander Anthology Volume II':
             if name == 'Emblem: Daretti, Scrap Savant':
                 name = 'Daretti Emblem'
+            elif name == 'Wurm':
+                if int(card_num) == 16:
+                    name = 'Wurm Token (Deathtouch)'
+                else:
+                    name = 'Wurm Token (Lifelink)'
             else:
                 name += ' Token'
         elif edition == 'Extras: The Lord of the Rings: Tales of Middle-earth':
@@ -321,6 +460,8 @@ def process_name(name, edition, card_num):
                 name = DROP_CARD
             elif name == 'Food':
                 #name = 'Food Token (#0' + card_num + ')' This looks like it perfectly matches CS' entry but it fails
+                name = DROP_CARD
+            elif name == 'Phyrexian Germ // Squirrel':
                 name = DROP_CARD
             else:
                 name += ' Token'
@@ -360,6 +501,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Kaladesh':
             if name == 'Energy Reserve':
                 name = 'Energy Reserve'
+            if name == 'Servo':
+                name = 'Servo Token (#' + card_num + ')'
             else:
                 name += ' Token'
         elif edition == 'Extras: Kaldheim':
@@ -432,11 +575,6 @@ def process_name(name, edition, card_num):
                     name = 'Elemental Token (Green)'
             else: 
                 name += ' Token'
-        elif edition == 'Extras: Eternal Masters':
-            if name == 'Elemental':
-                name = 'Elemental Token (Blue/Red)'
-            else:
-                name += ' Token'
         elif edition == 'Extras: Ravnica Allegiance':
             if name == 'Emblem: Domri, Chaos Bringer':
                 name = 'Domri Emblem'
@@ -464,6 +602,14 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: The Brothers\' War Commander':
             if name == 'Construct // Phyrexian Myr':
                 name = 'Construct Token | Phyrexian Myr Token (1/1)'
+            elif name == 'Goat // Construct':
+                name = 'Construct Token | Goat Token (1/1)'
+            elif name == 'Mishra\'s Warform // Inkling':
+                name = 'Inkling Token | Mishra\'s Warform Token'
+            elif name == 'Scrap // Powerstone':
+                name = DROP_CARD
+            elif name == 'Thopter // Faerie':
+                name = 'Faerie Token | Thopter Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
@@ -487,7 +633,9 @@ def process_name(name, edition, card_num):
             else:
                 name += ' Token'
         elif edition == 'Extras: Wilds of Eldraine':
-            if ' // ' in name:
+            if name == 'Rat // Food':
+                name = ' Food Token | Rat Token'
+            elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
@@ -615,6 +763,8 @@ def process_edition(edition, card_num, printing_id, printing_note):
     if edition == 'Avacyn Restored (The Helvault Experience)':
         edition = 'Avacyn Restored'
     # B
+    elif edition == 'Battlebond Promos':
+        edition = 'Launch Promos'
     elif edition == 'Bloomburrow':
         if int(card_num) >= 282 and int(card_num) <= 286:
             edition = 'Bloomburrow - Borderless'
@@ -714,10 +864,14 @@ def process_edition(edition, card_num, printing_id, printing_note):
         if int(card_num) == 24:
             edition = 'March of the Machine - Promo Pack'
     elif edition == 'Media Inserts':
-        if int(card_num) == 78:
+        if int(card_num) == 78 or int(card_num) == 99 or int(card_num) == 115:
             edition = 'Gift Box Promos'
+        elif int(card_num) == 61:
+            edition = 'Buy-a-Box Promos'
         else:
             edition = 'Resale Promos'
+    elif edition == 'Modern Horizons Foil':
+        edition = 'Modern Horizons'
     elif edition == 'Modern Horizons 2':
         if int(card_num) >= 327 and int(card_num) <= 380:
             edition = 'Modern Horizons 2 Showcase'
@@ -812,6 +966,8 @@ def process_edition(edition, card_num, printing_id, printing_note):
     elif edition == 'Unfinity':
         if int(card_num) >= 287 and int(card_num) <= 537:
             edition = 'Unfinity Galaxy Foil'
+    elif edition == 'Renaissance':
+        edition = None
 
     return edition
 
