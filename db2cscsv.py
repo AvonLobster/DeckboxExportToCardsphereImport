@@ -204,18 +204,15 @@ def process_name(name, edition, card_num):
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander 2018':
-            if name == 'Angel // Soldier':
-                name = 'Angel Token | Soldier Token'
-            elif name == 'Angel // Zombie':
-                name = 'Angel Token | Zombie Token'
-            elif name == 'Cat // Soldier':
-                name = 'Cat Token | Soldier Token'
-            elif name == 'Clue // Construct':
+            if name == 'Clue // Construct':
                 name = 'Clue Token | Construct Token (6/12)'
             elif name == 'Construct // Myr':
                 name = 'Construct Token (4/4) (2/1)'
             elif name == 'Token: Dragon Egg // Dragon':
                 name = 'Dragon Token | Dragon Egg'
+            elif ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander 2016':
@@ -236,6 +233,11 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Commander 2015':
             if name == 'Elephant // Saproling':
                 name = 'Elephant Token | Saproling Token'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Dominaria':
+            if name == 'Knight':
+                name = 'Knight Token (#' + card_num +')'
             else:
                 name += ' Token'
         elif edition == 'Extras: Throne of Eldraine':
@@ -285,6 +287,12 @@ def process_name(name, edition, card_num):
             elif name == 'Food':
                 #name = 'Food Token (#0' + card_num + ')' This looks like it perfectly matches CS' entry but it fails
                 name = DROP_CARD
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Modern Horizons 3':
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Unsanctioned':
@@ -657,7 +665,10 @@ def process_edition(edition, card_num, printing_id, printing_note):
         if int(card_num) == 24:
             edition = 'March of the Machine - Promo Pack'
     elif edition == 'Media Inserts':
-        edition = 'Resale Promos'
+        if int(card_num) == 78:
+            edition = 'Gift Box Promos'
+        else:
+            edition = 'Resale Promos'
     elif edition == 'Modern Horizons 2':
         if int(card_num) >= 327 and int(card_num) <= 380:
             edition = 'Modern Horizons 2 Showcase'
