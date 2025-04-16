@@ -153,7 +153,25 @@ def process_name(name, edition, card_num):
             else:
                 name += ' Token'
         elif edition == 'Extras: Murders at Karlov Manor Commander':
-            if ' // ' in name:
+            if name == 'City\'s Blessing // Human Soldier':
+                name = 'City\'s Blessing | Human Soldier Token'
+            elif name == 'Drake // Cat':
+                name = 'Cat Token | Drake Token'
+            elif name == 'Insect // Clue':
+                name = 'Clue Token | Insect Token'
+            elif name == 'Tentacle // Koma\'s Coil':
+                name = 'Koma\'s Coil Token | Tentacle Token'
+            elif name == 'Thopter // Rhino Warrior':
+                name = 'Rhino Warrior Token | Thopter Token (1/1)'
+            elif name == 'Thopter Token | Treasure Token':
+                name = DROP_CARD
+            elif name == 'Tiny Token | Eldrazi Token':
+                name = 'Eldrazi Token | Tiny Token'
+            elif name == 'Zombie Token | City\'s Blessing Token':
+                name = 'City\'s Blessing | Zombie Token'
+            elif name == 'Zombie Token | Salamander Warrior Token':
+                name = 'Salamander Warrior Token | Zombie Token'
+            elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
@@ -444,7 +462,9 @@ def process_name(name, edition, card_num):
             else:
                 name += ' Token'
         elif edition == 'Extras: The Brothers\' War Commander':
-            if ' // ' in name:
+            if name == 'Construct // Phyrexian Myr':
+                name = 'Construct Token | Phyrexian Myr Token (1/1)'
+            elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
@@ -726,6 +746,8 @@ def process_edition(edition, card_num, printing_id, printing_note):
     # O
     elif edition == 'Prerelease Events: Oath of the Gatewatch':
         edition = 'Prerelease Promos'
+    elif edition == 'Outlaws of Thunder Junction Commander':
+        edition = 'Outlaws of Thunder Junction - Commander'
     # P
     elif edition == 'Phyrexia: All Will Be One':
         if (int(card_num) == 271):
