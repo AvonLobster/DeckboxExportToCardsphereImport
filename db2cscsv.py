@@ -147,13 +147,17 @@ def process_name(name, edition, card_num):
                 name = 'Copy Token | Human Knight Token'
             elif name == 'Human Knight // Food':
                 name = 'Food Token | Human Knight Token'
+            elif name == 'Settlment // Human Soldier':
+                name = 'Human Soldier Token | Settlement Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Murders at Karlov Manor Commander':
-            if ' // ' in name:
+            if name == 'Thopter // Treasure':
+                name = 'Thopter Token | Treasure Token (1/1)'
+            elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
@@ -233,6 +237,8 @@ def process_name(name, edition, card_num):
                     name = 'Myr Token (2/1) (#8)'
                 else:
                     name = 'Myr Token (1/1) (#25)'
+            elif name == 'Survivor // Myr':
+                name = 'Myr Token | Survivor Token (1/1)'
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander 2016':
