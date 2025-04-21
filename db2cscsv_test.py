@@ -41,12 +41,21 @@ class TestDeckboxToCardSphereCSV(unittest.TestCase):
 
         self.assertEqual(result, 'Gideon Emblem')
 
+    def test_name_with_quotes(self):
+        card = '"Bounty: Rissa ""Blades"" Lee // Bounty Rules"'
+        ed = 'Extras: Outlaws of Thunder Junction Commander'
+        num = 8
+
+        result = db2cscsv.process_name(card, ed, num)
+
+        self.assertEqual(result, 'Bounty: Rissa "Blades" Lee')
+
 # Card Edition Tests
     def test_the_list_edition(self):
         ed = 'The List'
         num = 2
 
-        result = db2cscsv.process_edition(ed, num, '')
+        result = db2cscsv.process_edition(ed, num, 95480, '')
 
         self.assertEqual(result, 'Mystery Booster')
 
@@ -54,7 +63,7 @@ class TestDeckboxToCardSphereCSV(unittest.TestCase):
         ed = 'Murders at Karlov Manor'
         num = 329
 
-        result = db2cscsv.process_edition(ed, num, '')
+        result = db2cscsv.process_edition(ed, num, '', '')
 
         self.assertEqual(result, 'Murders at Karlov Manor - Borderless')
 
@@ -62,7 +71,7 @@ class TestDeckboxToCardSphereCSV(unittest.TestCase):
         ed = 'Ravnica Remastered'
         num = 335
 
-        result = db2cscsv.process_edition(ed, num, '')
+        result = db2cscsv.process_edition(ed, num, '', '')
 
         self.assertEqual(result, 'Ravnica Remastered - Retro Frame')
 
@@ -70,7 +79,7 @@ class TestDeckboxToCardSphereCSV(unittest.TestCase):
         ed = 'Strixhaven: School of Mages'
         num = 382
 
-        result = db2cscsv.process_edition(ed, num, '')
+        result = db2cscsv.process_edition(ed, num, '', '')
 
         self.assertEqual(result, 'Strixhaven: School of Mages Promo Pack')
 
