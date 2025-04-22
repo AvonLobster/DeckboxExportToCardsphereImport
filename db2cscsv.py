@@ -122,8 +122,9 @@ def process_name(name, edition, card_num):
                 name += ' Token'
         #C
         elif edition == 'Extras: Commander 2015':
-            if name == 'Elephant // Saproling':
-                name = 'Elephant Token | Saproling Token'
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander 2016':
@@ -143,6 +144,8 @@ def process_name(name, edition, card_num):
                 name = 'Dragon Token | Gold Token (4/4)'
             elif name == 'Rat // Cat Warrior':
                 name = 'Cat Warrior Token | Rat Token'
+            elif name == 'Zombie // Gold':
+                name = 'Gold Token | Zombie Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Commander 2018':
@@ -159,6 +162,8 @@ def process_name(name, edition, card_num):
                     name = 'Myr Token (1/1) (#25)'
             elif name == 'Servo // Thopter':
                 name = 'Servo Token | Thopter Token (#25)'
+            elif name == 'Survivor // Myr':
+                name = 'Myr Token | Survivor Token (1/1)'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
@@ -277,7 +282,7 @@ def process_name(name, edition, card_num):
                 name = 'Copy Token | Radiation Token'
             elif name == 'Radiation // Zombie Mutant':
                 name = 'Radiation | Zombie Mutant Token'
-            elif name == 'Settlement // Human Solider':
+            elif name == 'Settlement // Human Soldier':
                 name = 'Human Soldier Token | Settlement Token'
             elif name == 'Soldier // Human Soldier':
                 name = 'Human Soldier Token | Soldier Token'
@@ -340,13 +345,13 @@ def process_name(name, edition, card_num):
                 name = 'Koma\'s Coil Token | Tentacle Token'
             elif name == 'Thopter // Rhino Warrior':
                 name = 'Rhino Warrior Token | Thopter Token (1/1)'
-            elif name == 'Thopter Token | Treasure Token':
-                name = DROP_CARD
-            elif name == 'Tiny Token | Eldrazi Token':
+            elif name == 'Thopter // Treasure':
+                name = 'Thopter Token | Treasure Token (1/1)'
+            elif name == 'Tiny // Eldrazi':
                 name = 'Eldrazi Token | Tiny Token'
-            elif name == 'Zombie Token | City\'s Blessing Token':
+            elif name == 'Zombie // City\'s Blessing':
                 name = 'City\'s Blessing | Zombie Token'
-            elif name == 'Zombie Token | Salamander Warrior Token':
+            elif name == 'Zombie // Salamander Warrior':
                 name = 'Salamander Warrior Token | Zombie Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
@@ -394,18 +399,6 @@ def process_name(name, edition, card_num):
                 name = name
             else:
                 name += ' Token'
-        elif edition == 'Secret Lair Drop Series':
-            if name.startswith('Walker'):
-                if int(card_num) == 703 or int(card_num) == 704:
-                    name = 'Walker Token (Metal Head)'
-                elif int(card_num) == 706:
-                    name = 'Walker Token (Bicycle Girl)'
-                elif int(card_num) == 701 or int(card_num == 705):
-                    name = 'Walker Token (Well Walker)'
-                elif int(card_num) == 702:
-                    name = 'Walker Token (Winslow)'
-                else:
-                    name = 'Walker Token (Blade Walker)'
         #T
         elif edition == 'Extras: Throne of Eldraine':
             if name == 'Food':
@@ -463,6 +456,8 @@ def process_name(name, edition, card_num):
                 name = DROP_CARD
             elif name == 'Phyrexian Germ // Squirrel':
                 name = DROP_CARD
+            elif name =='Zombie Army // Thopter':
+                name = DROP_CARD
             else:
                 name += ' Token'
         elif edition == 'Extras: Modern Horizons 3':
@@ -501,7 +496,7 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Kaladesh':
             if name == 'Energy Reserve':
                 name = 'Energy Reserve'
-            if name == 'Servo':
+            elif name == 'Servo':
                 name = 'Servo Token (#' + card_num + ')'
             else:
                 name += ' Token'
@@ -697,6 +692,20 @@ def process_name(name, edition, card_num):
     # Art cards
     if name.startswith('Art Card:'):
         return
+    
+    # Secret Lair
+    if edition == 'Secret Lair Drop Series':
+        if name.startswith('Walker'):
+            if int(card_num) == 703 or int(card_num) == 704:
+                name = 'Walker Token (Metal Head)'
+            elif int(card_num) == 706:
+                name = 'Walker Token (Bicycle Girl)'
+            elif int(card_num) == 701 or int(card_num == 705):
+                name = 'Walker Token (Well Walker)'
+            elif int(card_num) == 702:
+                name = 'Walker Token (Winslow)'
+            else:
+                name = 'Walker Token (Blade Walker)'
 
     # Plains
     if name == 'Plains':
