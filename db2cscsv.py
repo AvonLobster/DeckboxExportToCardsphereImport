@@ -366,6 +366,10 @@ def process_name(name, edition, card_num):
                 name = name.split(' // ')[0]
             elif name == 'Dragon Elemental // Bird Illusion':
                 name = 'Bird Illusion Token | Dragon Elemental Token'
+            elif name == 'Soldier // Drake':
+                name = 'Drake Token | Soldier Token'
+            elif name == 'Soldier // Elemental':
+                name = 'Elemental Token | Soldier Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
@@ -461,7 +465,39 @@ def process_name(name, edition, card_num):
             else:
                 name += ' Token'
         elif edition == 'Extras: Modern Horizons 3':
-            if ' // ' in name:
+            if name == 'Cat // Energy Reserve':
+                name = 'Cat Token | Energy Reserve'
+            elif name == 'Eldrazi Spawn // Energy Reserve':
+                name = 'Eldrazi Spawn Token | Energy Reserve'
+            elif name == 'Servo // Energy Reserve':
+                name = 'Energy Reserve | Servo Token'
+            elif name == 'Zombie // Energy Reserve':
+                name = 'Energy Reserve | Zombie Token'
+            elif ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
+        elif edition == 'Extras: Modern Horizons 3 Commander':
+            if name == 'Copy // Eldrazi Angel':
+                name = 'Copy Token | Eldrazi Angel Token'
+            elif name == 'Eldrazi Spawn // Eldrazi Scion':
+                name = 'Eldrazi Scion Token | Eldrazi Spawn Token'
+            elif name == 'Shapeshifter // Copy':
+                name = 'Copy Token | Shapeshifter Token'
+            elif name == 'Dragon // Copy':
+                name = 'Copy Token | Dragon Token'
+            elif name == 'Saproling // Emblem: Garruk, Apex Predator':
+                name = 'Garruk, Apex Predator Emblem | Saproling Token'
+            elif name == 'Shapeshifter // Dragon':
+                name = 'Dragon Token | Shapeshifter Token'
+            elif name == 'Tarmogoyf // Goblin':
+                name = 'Goblin Token | Tarmogoyf Token'
+            elif name == 'Tarmogoyf // Saproling':
+                name = 'Saproling Token | Tarmogoyf Token'
+            elif name == 'Thopter // Copy':
+                name = 'Copy Token | Thopter Token'
+            elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
             else:
@@ -605,6 +641,20 @@ def process_name(name, edition, card_num):
                 name = DROP_CARD
             elif name == 'Thopter // Faerie':
                 name = 'Faerie Token | Thopter Token'
+            elif name == 'Construct // Thopter':
+                name = 'Construct Token | Thopter Token (*/*)'
+            elif name == 'Powerstone // Faerie':
+                name = 'Faerie Token | Powerstone Token'
+            elif name == 'Powerstone // Myr':
+                name = 'Myr Token | Powerstone Token'
+            elif name == 'Scrap // Phyrexian Myr':
+                name = 'Phyrexian Myr Token | Scrap Token'
+            elif name == 'Servo // Eldrazi':
+                name = 'Eldrazi Token | Servo Token'
+            elif name == 'Servo // Powerstone':
+                name = 'Powerstone Token | Servo Token'
+            elif name == 'Thopter // Copy':
+                name = 'Copy Token | Thopter Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
@@ -790,6 +840,9 @@ def process_edition(edition, card_num, printing_id, printing_note):
             edition = 'The Brothers\' War - Borderless'
         elif int(card_num) >= 301 and int(card_num) <= 377:
             edition = 'The Brothers\' War - Extended Art'
+    elif edition == 'The Brothers\' War Commander':
+        if int(card_num) in [2, 3, 11]:
+            edition = 'The Brothers\' War'
     elif edition == 'The Brothers\' War Retro Artifacts':
         if int (card_num) >= 64:
             edition = 'The Brothers\' War - Retro Artifacts (Schematic)'
@@ -888,6 +941,9 @@ def process_edition(edition, card_num, printing_id, printing_note):
             edition = 'Modern Horizons 2 Retro Frame'
     elif edition == 'Prerelease Events: Modern Horizons 2':
         edition = 'Modern Horizons 2 Prerelease Promos'
+    elif edition == 'Modern Horizons 3 Commander':
+        if int (card_num) in [1, 2, 3, 5, 13, 23, 28, 30]:
+            edition = 'Modern Horizons 3'
     elif edition == 'Murders at Karlov Manor':
         if int(card_num) >= 287 and int(card_num) <= 316:
             edition = 'Murders at Karlov Manor - Showcase Magnified'
@@ -900,7 +956,9 @@ def process_edition(edition, card_num, printing_id, printing_note):
         elif int(card_num) >= 390 and int(card_num) <= 422:
             edition = 'Murders at Karlov Manor - Extended Art'
     elif edition == 'Murders at Karlov Manor Commander':
-        if int(card_num) >= 312 and int(card_num) <= 358:
+        if int(card_num) == 15:
+            edition = 'Murders at Karlov Manor'
+        elif int(card_num) >= 312 and int(card_num) <= 358:
             edition = ' Murders at Karlov Manor - Commander Extended Art'
         else:
             edition = 'Murders at Karlov Manor - Commander'
