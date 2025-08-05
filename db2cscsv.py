@@ -251,6 +251,9 @@ def process_name(name, edition, card_num):
                 name = 'Saproling Token (#' + card_num + ')'
             else:
                 name += ' Token'
+        elif edition == 'Duel Decks: Zendikar vs. Eldrazi':
+            if name == 'Hellion':
+                name = 'Hellion Token'
         #E
         elif edition == 'Extras: Eternal Masters':
             if name == 'Elemental':
@@ -334,6 +337,11 @@ def process_name(name, edition, card_num):
                 name = name
             else:
                 name += ' Token'
+        elif edition == 'Extras: Murders at Karlov Manor':
+            if name == 'Ability Punchcard':
+                name = 'Punch Card | Punch Card'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Murders at Karlov Manor Commander':
             if name == 'City\'s Blessing // Human Soldier':
                 name = 'City\'s Blessing | Human Soldier Token'
@@ -353,6 +361,8 @@ def process_name(name, edition, card_num):
                 name = 'City\'s Blessing | Zombie Token'
             elif name == 'Zombie // Salamander Warrior':
                 name = 'Salamander Warrior Token | Zombie Token'
+            elif name == 'Merfolk // Detective':
+                name = 'Detective Token | Merfolk Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
@@ -380,11 +390,11 @@ def process_name(name, edition, card_num):
             if name == 'Emblem: Koth, Fire of Resistance':
                 name = 'Koth, Fire of Resistance Emblem'
             elif name == 'Phyrexian Goblin // Poison Counter':
-                name = DROP_CARD
+                name = 'Phyrexian Goblin Token | Poison Counter'
             elif name == 'Phyrexian Mite // Phyrexian Mite':
-                name = DROP_CARD
+                name = 'Phyrexian Mite Token | Phyrexian Mite Token'
             elif name == 'Rebel // Phyrexian Goblin':
-                name = DROP_CARD
+                name = 'Phyrexian Goblin Token | Rebel Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Planechase Anthology':
@@ -443,6 +453,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: The Lord of the Rings: Tales of Middle-earth':
             if name == 'Food':
                 name = 'Food Token (#009)'
+            elif name == 'Human Soldier':
+                name = 'Human Soldier Token (#00' + card_num + ')'
             else:
                 name += ' Token'
         elif edition == 'Extras: Modern Horizons 2':
@@ -497,6 +509,18 @@ def process_name(name, edition, card_num):
                 name = 'Saproling Token | Tarmogoyf Token'
             elif name == 'Thopter // Copy':
                 name = 'Copy Token | Thopter Token'
+            elif name == 'Copy // Beast':
+                name = 'Beast Token | Copy Token (4/4)'
+            elif name == 'Zombie // Elephant':
+                name = 'Elephant Token | Zombie Token'
+            elif name == 'Beast // Elephant':
+                name = 'Beast Token | Elephant Token (4/4)'
+            elif name == 'Beast // Insect':
+                name = 'Beast Token | Insect Token (3/3)'
+            elif name == 'Forest Dryad // Emblem: Vivien Reid':
+                name = 'Forest Dryad Token | Vivien Reid Emblem'
+            elif name == 'Hydra // Boar':
+                name = 'Boar Token | Hydra Token'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
@@ -534,6 +558,8 @@ def process_name(name, edition, card_num):
                 name = 'Energy Reserve'
             elif name == 'Servo':
                 name = 'Servo Token (#' + card_num + ')'
+            elif name == 'Thopter':
+                name = 'Thopter Token (#' + card_num + ')'
             else:
                 name += ' Token'
         elif edition == 'Extras: Kaldheim':
@@ -550,6 +576,8 @@ def process_name(name, edition, card_num):
                 name = 'Narset Emblem'
             elif name == 'Ability Punchcard':
                 name = 'Punch Card'
+            elif name == 'Human Soldier':
+                name = 'Human Soldier Token (#0' + card_num + ')'
             else:
                 name += ' Token'
         elif edition == 'Extras: Innistrad: Midnight Hunt':
@@ -638,7 +666,7 @@ def process_name(name, edition, card_num):
             elif name == 'Mishra\'s Warform // Inkling':
                 name = 'Inkling Token | Mishra\'s Warform Token'
             elif name == 'Scrap // Powerstone':
-                name = DROP_CARD
+                name = 'Powerstone Token | Scrap Token'
             elif name == 'Thopter // Faerie':
                 name = 'Faerie Token | Thopter Token'
             elif name == 'Construct // Thopter':
@@ -655,6 +683,8 @@ def process_name(name, edition, card_num):
                 name = 'Powerstone Token | Servo Token'
             elif name == 'Thopter // Copy':
                 name = 'Copy Token | Thopter Token'
+            elif name == 'Construct // Servo':
+                name = 'Construct Token | Servo Token (*/*)'
             elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
@@ -663,6 +693,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: March of the Machine':
             if name == 'Double-Faced Card Placeholder':
                 name = 'Helper Card'
+            elif name == 'Incubator // Phyrexian':
+                name = 'Incubator Token | Phyrexian Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: The Lost Caverns of Ixalan':
@@ -700,6 +732,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Ravnica Remastered':
             if name == 'Goblin':
                 name = 'Goblin Token (1/1)'
+            elif name == 'Emblem: Domri Rade':
+                name = 'Domri Rade Emblem'
             else:
                 name += ' Token'
         # Double-Faced Card Placeholders aka Helper Cards
@@ -726,7 +760,9 @@ def process_name(name, edition, card_num):
         or edition == 'Innistrad: Double Feature' 
         or edition == 'Murders at Karlov Manor' 
         or edition == 'The Lost Caverns of Ixalan'
-        or edition == "Commander Legends: Battle for Baldur's Gate"):
+        or edition == "Commander Legends: Battle for Baldur's Gate"
+        or edition == 'Throne of Eldraine'
+        or edition == 'The List'):
         if ' // ' in name:
             name = name.split(' // ')[0]
 
@@ -763,7 +799,16 @@ def process_name(name, edition, card_num):
 
     # Island
     if name == 'Island':
-        name += ' (#' + card_num + ')'
+        if edition == 'Mirage':
+            name += ' (C)'
+        elif edition == 'Amonkhet':
+            if card_num == '251':
+                name = 'Island (#251) (Full Art)'
+        elif edition == 'Zendikar Rising':
+            if card_num == '269':
+                name = 'Island (#269) (Full Art)'
+        else:
+            name += ' (#' + card_num + ')'
 
     # Swamp
     if name == 'Swamp':
@@ -806,6 +851,11 @@ def process_name(name, edition, card_num):
         if int(card_num) >= 1064 and int(card_num) <= 1067:
             name = DROP_CARD
 
+    # Archenemy
+    if edition == 'Archenemy: Nicol Bolas':
+        if name == 'My Laughter Echoes' or name == 'Power Without Equal' or name == 'When Will You Learn?' or name == 'Choose Your Demise':
+            name = DROP_CARD
+
     # Clean up
     if name == DROP_CARD:
         name = None
@@ -841,7 +891,7 @@ def process_edition(edition, card_num, printing_id, printing_note):
         elif int(card_num) >= 301 and int(card_num) <= 377:
             edition = 'The Brothers\' War - Extended Art'
     elif edition == 'The Brothers\' War Commander':
-        if int(card_num) in [2, 3, 11]:
+        if int(card_num) in [2, 3, 11, 15]:
             edition = 'The Brothers\' War'
     elif edition == 'The Brothers\' War Retro Artifacts':
         if int (card_num) >= 64:
@@ -908,6 +958,16 @@ def process_edition(edition, card_num, printing_id, printing_note):
             edition = "The List - Wilds of Eldraine"
         elif int(printing_id) == 88397:
             edition = "The List - Murders at Karlov Manor"
+        elif int(printing_id) == 61972:
+            edition = 'The List - Innistrad: Crimson Vow'
+        elif int(printing_id) >= 85709 and int (printing_id) <= 85719:
+            edition = 'The List - The Lost Caverns of Ixalan'
+        elif int(printing_id) >= 53273 and int(printing_id) <= 53309:
+            edition = 'The List - Zendikar Rising'
+        elif int(printing_id) == 73284:
+            edition = "The List - The Brothers' War"
+        elif int(printing_id) == 80086:
+            edition = 'The List - Lord of the Rings: Tales of Middle-earth'
         elif int(printing_id) > 95481:
             edition = 'Mystery Booster 2'
         else:
@@ -942,8 +1002,10 @@ def process_edition(edition, card_num, printing_id, printing_note):
     elif edition == 'Prerelease Events: Modern Horizons 2':
         edition = 'Modern Horizons 2 Prerelease Promos'
     elif edition == 'Modern Horizons 3 Commander':
-        if int (card_num) in [1, 2, 3, 5, 13, 23, 28, 30]:
+        if int (card_num) in [1, 3, 5, 13, 23, 28, 29, 30]:
             edition = 'Modern Horizons 3'
+    elif edition == 'Multiverse Legends':
+        edition = 'March of the Machine - Multiverse Legends'
     elif edition == 'Murders at Karlov Manor':
         if int(card_num) >= 287 and int(card_num) <= 316:
             edition = 'Murders at Karlov Manor - Showcase Magnified'
