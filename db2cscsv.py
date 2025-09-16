@@ -340,6 +340,8 @@ def process_name(name, edition, card_num):
         elif edition == 'Extras: Murders at Karlov Manor':
             if name == 'Ability Punchcard':
                 name = 'Punch Card | Punch Card'
+            elif name == 'Merfolk // Detective':
+                name = 'Detective Token | Merfolk Token'
             else:
                 name += ' Token'
         elif edition == 'Extras: Murders at Karlov Manor Commander':
