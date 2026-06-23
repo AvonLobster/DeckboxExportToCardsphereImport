@@ -244,6 +244,24 @@ def process_name(name, edition, card_num):
             else:
                 name += ' Token'
         #D
+        elif edition == 'Extras: Doctor Who':
+            if name == 'Alien Angel // Mark of the Rani':
+                name = 'Alien Angel Token | Mark of the Rani'
+            elif name == 'Copy // Alien Angel':
+                name = 'Alien Angel Token | Copy Token'
+            elif name == 'Copy // Clue':
+                name = 'Clue Token | Copy Token'
+            elif name == 'Dalek // Alien Angel':
+                name = 'Alien Angel Token | Dalek Token'
+            elif name == 'Dalek // Clue':
+                name = 'Clue Token | Dalek Token'
+            elif name == 'Dalek // Cyberman':
+                name = 'Cyberman Token | Dalek Token'
+            elif ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
+            else:
+                name += ' Token'
         elif edition == 'Extras: Dominaria':
             if name == 'Knight':
                 name = 'Knight Token (#' + card_num +')'
@@ -416,6 +434,10 @@ def process_name(name, edition, card_num):
             else:
                 name += ' Token'
         #T
+        elif edition == 'Extras: Tarkir: Dragonstorm Commander':
+            if ' // ' in name:
+                two_sided_token = name.split(' // ')
+                name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
         elif edition == 'Extras: Throne of Eldraine':
             if name == 'Food':
                 name = 'Food Token (#' + card_num + ')'
@@ -1102,7 +1124,11 @@ def process_edition(edition, card_num, printing_id, printing_note):
 
     return edition
 
-
+def process_condition(condition):
+    if condition == 'Played':
+        condition = 'Moderately Played'
+    return condition
+    
 
 def process_foil(foil, name):
     if name == 'Avenger of Zendikar':
@@ -1138,6 +1164,8 @@ def process_csv(dbcsv):
                     if col is None:
                         omitRow = True
                         break
+                if i == CSV_CONDITION:
+                    col = process_condition(col)
                 if i == CSV_FOIL:
                     col = process_foil(col, row[2])
                 
