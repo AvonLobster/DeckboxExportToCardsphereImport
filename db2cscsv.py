@@ -435,7 +435,17 @@ def process_name(name, edition, card_num):
                 name += ' Token'
         #T
         elif edition == 'Extras: Tarkir: Dragonstorm Commander':
-            if ' // ' in name:
+            if name == 'Dragon // Copy':
+                name = 'Copy Token | Dragon Token (5/5)'
+            elif name == 'Dragon Egg // Dragon':
+                name = 'Dragon Token | Dragon Egg Token'
+            elif name == 'Frog Lizard // Dragon':
+                name = 'Dragon Token | Frog Lizard Token'
+            elif name == 'Wall // Insect':
+                name = 'Insect Token | Wall Token'
+            elif name == 'Wall // Spider':
+                name = 'Spider Token | Wall Token'
+            elif ' // ' in name:
                 two_sided_token = name.split(' // ')
                 name = two_sided_token[0] + ' Token | ' + two_sided_token[1] + ' Token'
         elif edition == 'Extras: Throne of Eldraine':
@@ -1074,6 +1084,9 @@ def process_edition(edition, card_num, printing_id, printing_note):
     elif edition == 'Promo pack: Strixhaven: School of Mages':
         edition = 'Strixhaven: School of Mages Promo Pack'
     # T
+    elif edition == 'Tarkir: Dragonstorm Commander':
+        if int(card_num) in [1, 4, 18, 28]:
+            edition = 'Tarkir: Dragonstorm'
     elif edition == 'Promo Pack: Theros Beyond Death':
         edition = 'Theros: Beyond Death - Promo Pack'
     elif edition == 'Throne of Eldraine Foil Double Sided':
